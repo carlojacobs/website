@@ -123,24 +123,28 @@ export default function HomePage() {
           </time>
         </div>
 
-        <div className="text-xl leading-snug">
-          <Link href={featured.url} className="underline underline-offset-4">
+        <Link href={featured.url} className="block rounded-none border border-black/10 p-4">
+          <div className="flex items-baseline justify-between text-sm opacity-60">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+              Featured Article
+            </span>
+            <time className="time-citation" dateTime={String(featured.data.created)}>
+              {formatLongDate(featured.data.created)}
+            </time>
+          </div>
+          <div className="mt-2 text-xl leading-snug">
             {featured.data.title}
-          </Link>
-        </div>
-
-        <p className="text-sm leading-6 opacity-75 text-justify">
-          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-            Abstract:
-          </span>
-          {truncateSentenceOrChars(getWritingBodyText(featured), 260)}
-        </p>
-
-        <div>
-          <Link href={featured.url} className="text-sm underline underline-offset-4 opacity-70">
+          </div>
+          <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+            Abstract
+          </div>
+          <p className="mt-1 text-sm leading-6 opacity-75 text-justify">
+            {truncateSentenceOrChars(getWritingBodyText(featured), 260)}
+          </p>
+          <div className="mt-3 text-xs uppercase tracking-[0.18em] opacity-60">
             Read full text →
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     ) : (
       <p className="text-sm opacity-70">
