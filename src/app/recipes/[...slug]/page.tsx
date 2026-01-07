@@ -97,7 +97,7 @@ export default async function RecipePage(props: {
         </div>
       </div>
 
-      <article className="prose prose-neutral max-w-none">
+      <article className="prose prose-neutral max-w-none text-[0.95rem]">
         <MDX
           components={getMDXComponents({
             a: createRelativeLink(recipesSource, page),

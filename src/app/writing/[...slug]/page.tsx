@@ -108,7 +108,7 @@ export default async function WritingPostPage(props: {
         </div>
       </div>
 
-      <article className="prose prose-neutral max-w-none">
+      <article className="prose prose-neutral max-w-none text-[0.95rem]">
         <MDX
           components={getMDXComponents({
             // Allows relative file path linking inside your writing collection
