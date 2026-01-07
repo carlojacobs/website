@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IssueMeta } from "@/components/issue-meta";
 import {
   Select,
   SelectItem,
@@ -11,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IssueMeta } from "@/components/issue-meta";
 
 type IssueOption = {
   value: string;
@@ -47,10 +47,10 @@ export function IssueSelect(props: {
   if (!options.length) return null;
 
   return (
-    <Select value={selectedValue} onValueChange={onValueChange} items={items} modal={false}>
+    <Select value={selectedValue} onValueChange={onValueChange} items={items}>
       <SelectTrigger
         aria-label="Select issue"
-        className="!h-auto !min-h-0 w-auto min-w-0 items-baseline justify-start gap-1 !border-0 !bg-transparent !px-0 !py-0 !text-sm !leading-none !shadow-none focus-visible:ring-0 [&_[data-slot=select-icon]]:hidden"
+        className="!h-auto !min-h-0 !w-auto !min-w-0 !border-0 !bg-transparent !px-0 !py-0 !text-sm !leading-none !shadow-none focus-visible:ring-0 [&_[data-slot=select-icon]]:hidden"
       >
         <SelectValue className="sr-only" />
         {selectedOption ? (

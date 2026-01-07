@@ -1,9 +1,10 @@
 ---
 created: 2025.12.18 12:28
-updated: 2026-01-07T17:01
+updated: 2026-01-08T00:20
 title: Burnt Basque Cheesecake
 categories:
   - deserts
+  - Spanish
 ---
 Ingredients (ALL SHOULD BE ROOM TEMPERATURE):
 

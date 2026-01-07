@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/writing/Essay Writing Protocol.md",
+                "file": "src/content/recipes/Burnt Basque Cheesecake.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Essay Writing Protocol"
+              "title": "Burnt Basque Cheesecake"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/Essay Writing Protocol.md",
+                "file": "src/content/recipes/Burnt Basque Cheesecake.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Essay Writing Protocol"
+              "title": "Outline of Burnt Basque Cheesecake"
             }
           },
           {
@@ -204,6 +204,9 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "src/content/recipes/Pasta alla Norcina.md",
+    "src/content/recipes/Burnt Basque Cheesecake.md",
+    "src/content/writing/Essay Writing Protocol.md",
     "src/components/ui/select 2.tsx",
     "src/components/issue-select 2.tsx",
     "src/lib/utils.ts",
@@ -214,9 +217,7 @@
     "src/components/issue-select.tsx",
     "node_modules/@base-ui",
     "src/components/journal.tsx",
-    "src/components",
     "src/content/writing/My Thoughts on Taking Notes.md",
-    "src/content/recipes/Burnt Basque Cheesecake.md",
     "src/content/writing/The Traveler.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
     "src/content/writing/Hoe te Studeren.md",
@@ -225,7 +226,6 @@
     "src/lib/My Thoughts on Taking Notes.md",
     "src/lib/Hoe te Studeren.md",
     "AGENTS.md",
-    "src/content/writing/Essay Writing Protocol.md",
     "README.md",
     "src/content/writing/test-post.md",
     "src/content/writing/my-post.md",
