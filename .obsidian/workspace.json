@@ -204,6 +204,8 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "src/components/journal.tsx",
+    "src/components",
     "src/content/writing/My Thoughts on Taking Notes.md",
     "src/lib/site.ts",
     "src/app/recipes/[...slug]/page 2.tsx",
@@ -222,7 +224,6 @@
     "src/app/topics/writing/[topic]",
     "src/app/topics/writing",
     "src/app/topics/[topic]/page.tsx",
-    "src/app/recipes/[...slug]/page.tsx",
     "AGENTS.md",
     "src/content/writing/Essay Writing Protocol.md",
     "README.md",

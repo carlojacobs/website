@@ -3,11 +3,10 @@ created: 2025.09.18 11:31
 categories:
   - writing
 finished: 2025-09-22
-updated: 2026-01-07T21:08
+updated: 2026-01-07T21:10
 title: How to Write an Essay
 ---
-[[Hoe te Studeren]]
-This is a note that summarises the essay [writing guide](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://jordanbpeterson.com/wp-content/uploads/2018/02/Essay_Writing_Guide.docx&ved=2ahUKEwiltvbI_-GPAxUq0gIHHX2dAhUQFnoECAsQAQ&usg=AOvVaw3KyLd4DMN7itJ47rOkO__z) by [[Jordan B Peterson]]. I came across this guide a while ago, but did not read it fully. I tried his app called [Essay](https://essay.app) for a while, and did produce some of my best writing using that (although it was not a lot). However, I feel like it is time to fully internalise this skill and this guide, so that I do not need to depend on a tool to write a good essay. And I want to write good essay, I want to start writing more. More and more, I hear people I look up to say that they started writing early in their careers. I'm starting now.
+This is a note that summarises the essay [writing guide](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://jordanbpeterson.com/wp-content/uploads/2018/02/Essay_Writing_Guide.docx&ved=2ahUKEwiltvbI_-GPAxUq0gIHHX2dAhUQFnoECAsQAQ&usg=AOvVaw3KyLd4DMN7itJ47rOkO__z) by Jordan B Peterson. I came across this guide a while ago, but did not read it fully. I tried his app called [Essay](https://essay.app) for a while, and did produce some of my best writing using that (although it was not a lot). However, I feel like it is time to fully internalise this skill and this guide, so that I do not need to depend on a tool to write a good essay. And I want to write good essay, I want to start writing more. More and more, I hear people I look up to say that they started writing early in their careers. I'm starting now.
 
 The guide is a bit long, so here is my summary.
 

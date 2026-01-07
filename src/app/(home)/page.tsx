@@ -2,10 +2,11 @@
 import Link from "next/link";
 import { writingSource } from "@/lib/writing";
 import { recipesSource } from "@/lib/recipes";
-import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
+import { formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug } from "@/lib/topics";
-import { getWritingBodyText, getWritingFileName, truncateSentenceOrChars, truncateWords } from "@/lib/excerpt";
-import { FEATURED_EXCERPT_WORDS, FEATURED_WRITING_FILENAME, SITE_TITLE, getIssueMeta } from "@/lib/site";
+import { getWritingBodyText, getWritingFileName, truncateWords } from "@/lib/excerpt";
+import { FEATURED_EXCERPT_WORDS, FEATURED_WRITING_FILENAME } from "@/lib/site";
+import { JournalMasthead, JournalStrip } from "@/components/journal";
 
 // function toMillis(v: unknown): number {
 //   if (v instanceof Date) return v.getTime();
@@ -34,7 +35,6 @@ export default function HomePage() {
     .filter((p) => !p.data.draft)
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
 
-  const latest = posts[0];
   const recipes = recipesSource
     .getPages()
     .filter((p) => !p.data.draft)
@@ -64,7 +64,6 @@ export default function HomePage() {
 
 
 
-  const issue = getIssueMeta();
   const featured =
     posts.find((p) => getWritingFileName(p) === FEATURED_WRITING_FILENAME) ?? null;
 
@@ -72,39 +71,23 @@ export default function HomePage() {
     <main>
       {/* Masthead line */}
       <header className="mt-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
-          <div className="opacity-75">
-            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
-            <span className="opacity-60"> · </span>
-            <span className="opacity-60">Carlo Jacobs</span>
-          </div>
-
-          <div className="opacity-65">
-            <span className="font-semibold">Vol.</span>{" "}
-            {String(issue.volume).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <span className="font-semibold">No.</span>{" "}
-            {String(issue.number).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <time className="time-meta" dateTime={issue.updatedAt.toISOString()}>
-              {formatDate(issue.updatedAt)}
-            </time>
-          </div>
-        </div>
-
-        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
-          <span>Issue Summary</span>
-          <span>
-            {posts.length}{" "}
-            <Link href="/writing" className="underline underline-offset-4">
-              {posts.length === 1 ? "writing" : "writings"}
-            </Link>{" "}
-            · {recipes.length}{" "}
-            <Link href="/recipes" className="underline underline-offset-4">
-              {recipes.length === 1 ? "recipe" : "recipes"}
-            </Link>
-          </span>
-        </div>
+        <JournalMasthead />
+        <JournalStrip
+          paddingTopClass="pt-5"
+          left={<span>Issue Summary</span>}
+          right={
+            <span>
+              {posts.length}{" "}
+              <Link href="/writing" className="underline underline-offset-4">
+                {posts.length === 1 ? "writing" : "writings"}
+              </Link>{" "}
+              · {recipes.length}{" "}
+              <Link href="/recipes" className="underline underline-offset-4">
+                {recipes.length === 1 ? "recipe" : "recipes"}
+              </Link>
+            </span>
+          }
+        />
       </header>
 
       <hr className="my-5 border-amber-800/15" />

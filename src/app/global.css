@@ -54,6 +54,10 @@ body {
   font-size: 0.9em;
 }
 
+.prose blockquote {
+  border-left-color: #b45309;
+}
+
 html {
   font-size: 110%;
   scrollbar-gutter: stable;

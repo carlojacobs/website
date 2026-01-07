@@ -1,5 +1,6 @@
 // src/lib/site.ts
 export const SITE_TITLE = "The Very Unofficial Journal of Notes, Essays & Recipes";
+export const SITE_AUTHOR = "Carlo Jacobs";
 
 // Featured writing filename, e.g. "How to Write an Essay.md"
 export const FEATURED_WRITING_FILENAME = "Essay Writing Protocol.md";

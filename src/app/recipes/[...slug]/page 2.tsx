@@ -6,7 +6,7 @@ import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { getMDXComponents } from "@/mdx-components";
 import { formatLongDate } from "@/lib/date";
-import { SITE_TITLE } from "@/lib/site";
+import { JournalMasthead, JournalStrip } from "@/components/journal";
 
 export default async function RecipePage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -21,20 +21,21 @@ export default async function RecipePage(props: {
   return (
     <main>
       <header className="mt-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
-          <div className="opacity-75">
-            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
-            <span className="opacity-60"> · </span>
-            <span className="opacity-60">Carlo Jacobs</span>
-          </div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-            Recipes
-          </div>
-        </div>
-
-        <div className="mt-3 border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
-          Recipe
-        </div>
+        <JournalMasthead />
+        <JournalStrip
+          className="text-amber-800/70 opacity-100"
+          paddingTopClass="pt-5"
+          left={
+            <Link href="/" className="underline underline-offset-4">
+              ← Journal Cover
+            </Link>
+          }
+          right={
+            <Link href="/recipes" className="underline underline-offset-4">
+              All Recipes →
+            </Link>
+          }
+        />
       </header>
 
       <hr className="my-5 opacity-35" />

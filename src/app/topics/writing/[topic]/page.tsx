@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { topicSlug } from "@/lib/topics";
-import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
-import { SITE_TITLE, getIssueMeta } from "@/lib/site";
+import { formatYearMonth, toMillis } from "@/lib/date";
+import { JournalMasthead, JournalStrip } from "@/components/journal";
 
 export default async function WritingTopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -28,35 +28,15 @@ export default async function WritingTopicPage(props: {
       .flatMap((p) => p.data.categories as string[])
       .find((c) => topicSlug(String(c)) === topic) as string) ?? topic;
 
-  const issue = getIssueMeta();
-
   return (
     <main>
       <header className="mt-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
-          <div className="opacity-75">
-            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
-            <span className="opacity-60"> · </span>
-            <span className="opacity-60">Carlo Jacobs</span>
-          </div>
-
-          <div className="opacity-65">
-            <span className="font-semibold">Vol.</span>{" "}
-            {String(issue.volume).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <span className="font-semibold">No.</span>{" "}
-            {String(issue.number).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <time className="time-meta" dateTime={issue.updatedAt.toISOString()}>
-              {formatDate(issue.updatedAt)}
-            </time>
-          </div>
-        </div>
-
-        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
-          <span>Writing Topics</span>
-          <span>{matching.length} {matching.length === 1 ? "writing" : "writings"}</span>
-        </div>
+        <JournalMasthead />
+        <JournalStrip
+          paddingTopClass="pt-5"
+          left={<span>Writing Topics</span>}
+          right={<span>{matching.length} {matching.length === 1 ? "writing" : "writings"}</span>}
+        />
       </header>
 
       <hr className="my-5 opacity-35" />

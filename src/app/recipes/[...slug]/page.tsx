@@ -5,8 +5,8 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { getMDXComponents } from "@/mdx-components";
-import { formatDate, formatLongDate } from "@/lib/date";
-import { SITE_TITLE, getIssueMeta } from "@/lib/site";
+import { formatLongDate } from "@/lib/date";
+import { JournalMasthead, JournalStrip } from "@/components/journal";
 
 export default async function RecipePage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -17,37 +17,24 @@ export default async function RecipePage(props: {
   if (!page) notFound();
 
   const MDX = page.data.body;
-  const issue = getIssueMeta();
-
   return (
     <main>
       <header className="mt-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
-          <div className="opacity-75">
-            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
-            <span className="opacity-60"> · </span>
-            <span className="opacity-60">Carlo Jacobs</span>
-          </div>
-          <div className="opacity-65">
-            <span className="font-semibold">Vol.</span>{" "}
-            {String(issue.volume).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <span className="font-semibold">No.</span>{" "}
-            {String(issue.number).padStart(2, "0")}{" "}
-            <span className="opacity-60">·</span>{" "}
-            <time className="time-meta" dateTime={issue.updatedAt.toISOString()}>
-              {formatDate(issue.updatedAt)}
-            </time>
-          </div>
-        </div>
-        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] text-amber-800/70">
-          <Link href="/" className="underline underline-offset-4">
-            ← Journal Cover
-          </Link>
-          <Link href="/recipes" className="underline underline-offset-4">
-            All Recipes →
-          </Link>
-        </div>
+        <JournalMasthead />
+        <JournalStrip
+          className="text-amber-800/70 opacity-100"
+          paddingTopClass="pt-5"
+          left={
+            <Link href="/" className="underline underline-offset-4">
+              ← Journal Cover
+            </Link>
+          }
+          right={
+            <Link href="/recipes" className="underline underline-offset-4">
+              All Recipes →
+            </Link>
+          }
+        />
       </header>
 
       <hr className="my-5 opacity-35" />
