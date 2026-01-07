@@ -14,6 +14,11 @@ a:hover {
   color: #b45309; /* warm amber */
 }
 
+::selection {
+  background-color: #f1d6b3;
+  color: #1f2933;
+}
+
 html,
 body {
   background-color: #f8f7f4; /* parchment white */

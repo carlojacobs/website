@@ -107,7 +107,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <hr className="my-5 opacity-35" />
+      <hr className="my-5 border-amber-800/15" />
 
 
       <section className="mb-10">
@@ -122,7 +122,10 @@ export default function HomePage() {
             <div className="text-lg leading-snug">
               {featured.data.title}
             </div>
-            <time className="time-citation text-sm opacity-60" dateTime={String(featured.data.created)}>
+            <time
+              className="time-citation text-sm opacity-60 text-amber-700"
+              dateTime={String(featured.data.created)}
+            >
               {formatLongDate(featured.data.created)}
             </time>
           </div>
@@ -132,7 +135,7 @@ export default function HomePage() {
           <p className="mt-1 text-sm leading-6 opacity-75 text-justify">
             {truncateWords(getWritingBodyText(featured), FEATURED_EXCERPT_WORDS)}
           </p>
-          <div className="mt-3 text-xs uppercase tracking-[0.18em] opacity-60">
+          <div className="mt-3 text-xs uppercase tracking-[0.18em] text-amber-800/70">
             Read full text →
           </div>
         </Link>
