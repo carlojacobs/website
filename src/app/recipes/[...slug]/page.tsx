@@ -39,14 +39,26 @@ export default async function RecipePage(props: {
       <hr className="my-5 opacity-35" />
 
       <div className="mb-10">
-        <p className="text-sm opacity-70">
-          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-            Published:
-          </span>
-          <time className="time-citation" dateTime={String(page.data.created)}>
-            {formatLongDate(page.data.created)}
-          </time>
-        </p>
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-70">
+          <div>
+            <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+              Published:
+            </span>
+            <time className="time-citation" dateTime={String(page.data.created)}>
+              {formatLongDate(page.data.created)}
+            </time>
+          </div>
+          {page.data.updated ? (
+            <div className="text-right">
+              <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+                Updated:
+              </span>
+              <time className="time-citation" dateTime={String(page.data.updated)}>
+                {formatLongDate(page.data.updated)}
+              </time>
+            </div>
+          ) : null}
+        </div>
 
         <h1 className="mt-2 text-2xl font-semibold leading-tight">
           {page.data.title}
@@ -68,17 +80,6 @@ export default async function RecipePage(props: {
             </span>
           ))}
 
-          {page.data.updated ? (
-            <>
-              <span className="mx-2">·</span>
-              <span>
-                last updated{" "}
-                <time className="time-citation" dateTime={String(page.data.updated)}>
-                  {formatLongDate(page.data.updated)}
-                </time>
-              </span>
-            </>
-          ) : null}
         </div>
       </div>
 

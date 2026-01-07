@@ -3,8 +3,8 @@ created: 2025.06.21 14:45
 categories:
   - productivity
 finished: 2025-09-28
-updated: 2026-01-07T15:20
 title: My Thoughts on Note-Taking
+updated: 2026-01-07T17:26
 ---
 The building of a [second brain](https://www.buildingasecondbrain.com) is an interesting concept. I love the idea of storing information in some secondary place, other than your own brain, in order to circumvent the shortcomings of the human mind — forgetfulness, attention span and an outdated reward system.
 

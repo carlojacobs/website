@@ -6,6 +6,7 @@ import { writingSource } from "@/lib/writing";
 import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { formatLongDate } from "@/lib/date";
+import { getWritingBodyText } from "@/lib/excerpt";
 
 export default async function WritingPostPage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -17,6 +18,8 @@ export default async function WritingPostPage(props: {
 
   // ✅ Same as your docs route:
   const MDX = page.data.body;
+  const wordCount = getWritingBodyText(page).split(/\s+/).filter(Boolean).length;
+  const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 
   return (
     <main>
@@ -27,7 +30,7 @@ export default async function WritingPostPage(props: {
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+          <div className="text-right text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
             Writing
           </div>
         </div>
@@ -40,46 +43,54 @@ export default async function WritingPostPage(props: {
       <hr className="my-5 opacity-35" />
 
       <div className="mb-10">
-        <p className="text-sm opacity-70">
-          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-            Published:
-          </span>
-          <time className="time-citation" dateTime={String(page.data.created)}>
-            {formatLongDate(page.data.created)}
-          </time>
-        </p>
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-70">
+          <div>
+            <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+              Published:
+            </span>
+            <time className="time-citation" dateTime={String(page.data.created)}>
+              {formatLongDate(page.data.created)}
+            </time>
+          </div>
+          {page.data.updated ? (
+            <div className="text-right">
+              <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+                Updated:
+              </span>
+              <time className="time-citation" dateTime={String(page.data.updated)}>
+                {formatLongDate(page.data.updated)}
+              </time>
+            </div>
+          ) : null}
+        </div>
 
         <h1 className="mt-2 text-2xl font-semibold leading-tight">
           {page.data.title}
         </h1>
 
-        <div className="mt-3 text-sm opacity-70">
-          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-            Topics:
-          </span>
-          {page.data.categories.map((c: string, i: number) => (
-            <span key={c}>
-              <Link
-                href={`/topics/writing/${topicSlug(c)}`}
-                className="underline underline-offset-4"
-              >
-                {c}
-              </Link>
-              {i < page.data.categories.length - 1 ? ", " : ""}
+        <div className="mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm opacity-70">
+          <span>
+            <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+              Reading time:
             </span>
-          ))}
-
-          {page.data.updated ? (
-            <>
-              <span className="mx-2">·</span>
-              <span>
-                last updated{" "}
-                <time className="time-citation" dateTime={String(page.data.updated)}>
-                  {formatLongDate(page.data.updated)}
-                </time>
+            {readingMinutes} min
+          </span>
+          <span>
+            <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+              Topics:
+            </span>
+            {page.data.categories.map((c: string, i: number) => (
+              <span key={c}>
+                <Link
+                  href={`/topics/writing/${topicSlug(c)}`}
+                  className="underline underline-offset-4"
+                >
+                  {c}
+                </Link>
+                {i < page.data.categories.length - 1 ? ", " : ""}
               </span>
-            </>
-          ) : null}
+            ))}
+          </span>
         </div>
       </div>
 
