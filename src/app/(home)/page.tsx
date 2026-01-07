@@ -117,12 +117,6 @@ export default function HomePage() {
 
     {featured ? (
       <div className="space-y-2.5">
-        <div className="text-sm opacity-60">
-          <time className="time-citation" dateTime={String(featured.data.created)}>
-            {formatLongDate(featured.data.created)}
-          </time>
-        </div>
-
         <Link href={featured.url} className="block rounded-none border border-black/10 p-4">
           <div className="flex items-baseline justify-between text-sm opacity-60">
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
@@ -132,7 +126,7 @@ export default function HomePage() {
               {formatLongDate(featured.data.created)}
             </time>
           </div>
-          <div className="mt-2 text-xl leading-snug">
+          <div className="mt-2 text-lg leading-snug">
             {featured.data.title}
           </div>
           <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
@@ -170,7 +164,7 @@ export default function HomePage() {
                 >
                   {formatYearMonth(p.data.created)}
                 </time>
-                <Link href={p.url} className="underline underline-offset-4 text-[14px] leading-snug">
+                <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
                   {p.data.title}
                 </Link>
               </li>
@@ -217,7 +211,7 @@ export default function HomePage() {
                   >
                     {formatYearMonth(r.data.created)}
                   </time>
-                  <Link href={r.url} className="underline underline-offset-4 text-[14px] leading-snug">
+                  <Link href={r.url} className="underline underline-offset-4 text-[15px] leading-snug">
                     {r.data.title}
                   </Link>
                 </li>
