@@ -51,7 +51,7 @@ export default function HomePage() {
   return (
     <main>
       {/* Masthead line */}
-      <header className="mt-8">
+      <header className="mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
           <div className="opacity-75">
             <span className="font-semibold tracking-tight">Notes & Essays</span>
@@ -70,13 +70,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="mt-4 flex items-baseline justify-between text-xs uppercase tracking-[0.2em] opacity-55">
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/10 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Issue Summary</span>
-          <span>{posts.length} articles</span>
+          <span>{posts.length} articles · All Writing</span>
         </div>
       </header>
 
-      <hr className="my-7 opacity-25" />
+      <hr className="my-5 opacity-25" />
 
 
       <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-12 lg:divide-x lg:divide-black/10">
@@ -87,7 +87,7 @@ export default function HomePage() {
     </h2>
 
     {latest ? (
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <div className="text-sm opacity-60">
           <time className="time-citation" dateTime={String(latest.data.created)}>
             {formatLongDate(latest.data.created)}
@@ -100,15 +100,12 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Abstract block */}
-        <div className="border-t border-black/10 pt-3">
-          <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-55">
-            Abstract
-          </div>
-          <p className="text-sm leading-6 opacity-75 text-justify">
-            {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
-          </p>
-        </div>
+        <p className="text-sm leading-6 opacity-75 text-justify">
+          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+            Abstract:
+          </span>
+          {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
+        </p>
 
         <div>
           <Link href={latest.url} className="text-sm underline underline-offset-4 opacity-70">
@@ -122,47 +119,46 @@ export default function HomePage() {
       </p>
     )}
 
-    <hr className="my-10 opacity-25" />
+    <div className="mt-8">
+      <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+        Topics Index
+      </h2>
 
-    {/* TOPICS INDEX */}
-    <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-      Topics Index
-    </h2>
-
-    {topics.length ? (
-      <p className="leading-7 opacity-85">
-        {topics.map((t, i) => (
-          <span key={t.slug}>
-            <Link href={`/topics/${t.slug}`} className="underline underline-offset-4 opacity-90">
-              {t.label}
-            </Link>
-            {i < topics.length - 1 ? <span className="opacity-50">, </span> : null}
-          </span>
-        ))}
-      </p>
-    ) : (
-      <p className="text-sm opacity-70">No topics yet.</p>
-    )}
+      {topics.length ? (
+        <p className="leading-7 opacity-85">
+          {topics.map((t, i) => (
+            <span key={t.slug}>
+              <Link href={`/topics/${t.slug}`} className="underline underline-offset-4 opacity-90">
+                {t.label}
+              </Link>
+              {i < topics.length - 1 ? <span className="opacity-50">, </span> : null}
+            </span>
+          ))}
+        </p>
+      ) : (
+        <p className="text-sm opacity-70">No topics yet.</p>
+      )}
+    </div>
   </section>
 
   {/* RIGHT — ALL WRITING */}
   <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:pl-0">
     <div>
-      <div className="mb-3 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+      <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Complete Contents</span>
-        <span className="opacity-70">All Writing</span>
+        <span className="opacity-50">TOC</span>
       </div>
 
-      <ul className="space-y-2">
+      <ul className="space-y-1.5">
         {posts.map((p) => (
           <li key={p.url} className="flex items-baseline gap-3">
             <time
               dateTime={String(p.data.created)}
-              className="time-index relative top-[1px] w-20 shrink-0 text-sm text-gray-500/90"
+              className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
             >
               {formatYearMonth(p.data.created)}
             </time>
-            <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
+            <Link href={p.url} className="underline underline-offset-4 text-[14px] leading-snug">
               {p.data.title}
             </Link>
           </li>
