@@ -3,6 +3,9 @@ import { defineConfig, defineCollections } from "fumadocs-mdx/config";
 import { z } from "zod";
 import { globSync } from "glob";
 import wikiLinkPlugin from "@flowershow/remark-wiki-link";
+// import { remarkExcerpt } from "./src/lib/remark/excerpt";
+// import { remarkExcerpt } from "./remark-excerpt";
+
 
 const CONTENT_CWD = "src/content";
 const files = globSync("**/*.{md,mdx}", { cwd: CONTENT_CWD });
@@ -49,36 +52,38 @@ const dateLike = z.union([
  *
  * Normalize to string[] with wikilink wrappers removed.
  */
-const categoriesSchema = z
-  .preprocess((input) => {
-    if (input == null) return undefined;
+const categoriesSchema = z.preprocess((input) => {
+  const normalizeOne = (raw: string) =>
+    raw
+      .trim()
+      .replace(/^\[\[/, "")
+      .replace(/\]\]$/, "")
+      .trim();
 
-    const normalizeOne = (raw: string) =>
-      raw
-        .trim()
-        // strip Obsidian wikilink wrappers [[...]]
-        .replace(/^\[\[/, "")
-        .replace(/\]\]$/, "")
-        .trim();
+  const fallback = ["uncategorized"];
 
-    if (Array.isArray(input)) {
-      return input.map((v) => normalizeOne(String(v))).filter(Boolean);
-    }
+  // Missing field => fallback
+  if (input == null) return fallback;
 
-    if (typeof input === "string") {
-      const s = input.trim();
-      if (!s) return [];
+  if (Array.isArray(input)) {
+    const arr = input.map((v) => normalizeOne(String(v))).filter(Boolean);
+    return arr.length ? arr : fallback;
+  }
 
-      // Handle comma-separated strings
-      const parts = s.includes(",") ? s.split(",") : [s];
-      return parts.map((p) => normalizeOne(p)).filter(Boolean);
-    }
+  if (typeof input === "string") {
+    const s = input.trim();
+    if (!s) return fallback;
 
-    // Anything else: coerce to string and treat as one value
-    return [normalizeOne(String(input))].filter(Boolean);
-  }, z.array(z.string()))
-  .optional()
-  .default(["uncategorized"]);
+    const parts = s.includes(",") ? s.split(",") : [s];
+    const arr = parts.map((p) => normalizeOne(p)).filter(Boolean);
+    return arr.length ? arr : fallback;
+  }
+
+  const one = normalizeOne(String(input));
+  return one ? [one] : fallback;
+}, z.array(z.string()));
+
+
 
 
 const writingFrontmatterSchema = z.object({

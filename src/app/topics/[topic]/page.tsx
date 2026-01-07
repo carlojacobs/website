@@ -4,20 +4,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { topicSlug } from "@/lib/topics";
 
-function toMillis(v: unknown): number {
-  if (v instanceof Date) return v.getTime();
-  if (typeof v === "string") {
-    const t = Date.parse(v);
-    return Number.isFinite(t) ? t : 0;
-  }
-  return 0;
-}
-
-function formatYmd(v: unknown): string {
-  if (v instanceof Date) return v.toISOString().slice(0, 10);
-  if (typeof v === "string") return v.slice(0, 10);
-  return "";
-}
+import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
 
 export default async function TopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -43,7 +30,7 @@ export default async function TopicPage(props: {
       .find((c) => topicSlug(String(c)) === topic) as string) ?? topic;
 
   return (
-    <main className="mx-auto max-w-[42rem] px-4 sm:px-6 py-16">
+    <main>
       <header className="mb-10">
         <p className="text-sm opacity-70">
           <Link href="/" className="underline underline-offset-4">
@@ -61,23 +48,20 @@ export default async function TopicPage(props: {
         </p>
       </header>
 
-      <ul className="space-y-3">
+      <ul className="space-y-2">
         {matching.map((p) => (
-          <li key={p.url} className="flex gap-4">
-            <span className="w-28 shrink-0 text-sm opacity-70">
-              {formatYmd(p.data.created)}
+          <li key={p.url} className="flex items-baseline gap-3">
+            <span className="relative top-[1px] w-20 shrink-0 text-base text-gray-500">
+              {formatYearMonth(p.data.created)}
             </span>
-            <div className="min-w-0">
-              <Link href={p.url} className="underline underline-offset-4">
-                {p.data.title}
-              </Link>
-              <div className="mt-1 text-xs opacity-60">
-                {p.data.categories?.join(", ")}
-              </div>
-            </div>
+
+            <Link href={p.url} className="underline underline-offset-4">
+              {p.data.title}
+            </Link>
           </li>
         ))}
       </ul>
+
 
       <footer className="mt-16 text-sm opacity-70">
         <Link href="/writing" className="underline underline-offset-4">

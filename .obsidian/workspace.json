@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/writing/On Ideas That Don't Get to Be Realised.md",
+                "file": "src/content/writing/Essay Writing Protocol.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "On Ideas That Don't Get to Be Realised"
+              "title": "Essay Writing Protocol"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/On Ideas That Don't Get to Be Realised.md",
+                "file": "src/content/writing/Essay Writing Protocol.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of On Ideas That Don't Get to Be Realised"
+              "title": "Outline of Essay Writing Protocol"
             }
           },
           {
@@ -204,25 +204,25 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
-    "README.md",
-    "src/content/writing/Essay Writing Protocol.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
+    "src/content/writing/My Thoughts on Taking Notes.md",
+    "src/content/writing/Hoe te Studeren.md",
+    "src/content/writing/Essay Writing Protocol.md",
+    "src/lib/excerpt.ts",
+    "excerpt.ts",
+    "source.config.ts",
+    "remark-excerpt.ts",
+    "excerpt-",
+    "src/lib/remark/excerpt.ts",
+    "src/lib/remark",
+    "src/lib/date.ts",
+    "README.md",
     "src/app/topics/[topic]/page.tsx",
     "src/app/topics/[topic]",
-    "src/app/topics",
-    "src/lib/topics.ts",
-    "src/content/writing/Hoe te Studeren.md",
-    "src/content/writing/My Thoughts on Taking Notes.md",
     "src/content/writing/test-post.md",
     "src/content/writing/my-post.md",
     "src/content/pages/now.md",
     "src/content/pages/about.md",
-    "src/app/now/page.tsx",
-    "src/app/now",
-    "src/app/about/page.tsx",
-    "src/app/about",
-    "src/app/abour",
-    "src/lib/writing.ts",
     "src/app/writing/my-post.md",
     "Appje naar Nicole.md",
     "Daily/2026.01.06.md",
@@ -239,7 +239,6 @@
     "Weekly/2026–02.md",
     "Weekly/2025–01.md",
     "Discussiepunten.md",
-    "Habit list.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",

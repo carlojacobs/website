@@ -1,14 +1,12 @@
 ---
 created: 2025.12.15 11:18
 categories:
-  - "[[University]]"
-  - "[[Writing]]"
+  - university
 finished: 2026-01-04
-updated: 2026-01-07T12:03
+updated: 2026-01-07T14:53
 title: Hoe te Studeren?
+summary: asdjkfhasjfd asdkfjh sad skdjfh sd
 ---
-*Carlo Jacobs — dec '25*
-
 Hier volgt een beknopt stappenplan en een methode van studeren die mij heeft geholpen goede resultaten te boeken en wetenschappelijk onderbouwd is. Centraal staat het principe van ["active recall"](https://subjectguides.york.ac.uk/study-revision/active-recall). In tegenstelling tot stukken arceren, onderstrepen of je eigen samenvatting maken, is dit een studeertechniek die *echt* werkt[^2].
 
 Deze techniek bestaat uit vier onderdelen:

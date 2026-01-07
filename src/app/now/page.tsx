@@ -14,7 +14,7 @@ export default function AboutPage() {
 
   const MDX = page.data.body;
   return (
-    <main className="mx-auto max-w-2xl px-6 py-16">
+    <main>
       <MDX />
     </main>
   );

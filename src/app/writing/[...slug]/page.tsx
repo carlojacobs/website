@@ -5,13 +5,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-
-function formatYmd(v: unknown): string {
-  // Handles Date objects and strings like "2026-01-07T11:05"
-  if (v instanceof Date) return v.toISOString().slice(0, 10);
-  if (typeof v === "string") return v.slice(0, 10);
-  return "";
-}
+import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 
 export default async function WritingPostPage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -25,9 +19,9 @@ export default async function WritingPostPage(props: {
   const MDX = page.data.body;
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-16">
+    <main>
       <header className="mb-10">
-        <p className="text-sm opacity-70">{formatYmd(page.data.created)}</p>
+        <p className="text-sm opacity-70"><i>{formatLongDate(page.data.created)}</i></p>
 
         <h1 className="mt-2 text-3xl font-semibold leading-tight">
           {page.data.title}
@@ -49,7 +43,7 @@ export default async function WritingPostPage(props: {
         {page.data.updated ? (
             <>
             <span className="mx-2">·</span>
-            <span>Updated {formatYmd(page.data.updated)}</span>
+            <span><i>last updated {formatLongDate(page.data.updated)}</i></span>
             </>
         ) : null}
         </div>
