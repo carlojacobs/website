@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-import { formatLongDate } from "@/lib/date";
+import { formatDate, formatLongDate } from "@/lib/date";
 import { getWritingBodyText } from "@/lib/excerpt";
 
 export default async function WritingPostPage(props: {
@@ -30,13 +30,23 @@ export default async function WritingPostPage(props: {
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>
-          <div className="text-right text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-            Writing
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
           </div>
         </div>
-
-        <div className="mt-3 border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
-          Article
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          <Link href="/" className="underline underline-offset-4">
+            Journal Cover
+          </Link>
+          <span>
+            Correspondence Section · 3 Plates
+          </span>
         </div>
       </header>
 
@@ -103,15 +113,7 @@ export default async function WritingPostPage(props: {
         />
       </article>
 
-      <footer className="mt-16 text-sm opacity-70">
-        <Link href="/" className="underline underline-offset-4">
-          Home
-        </Link>
-        <span className="mx-2">·</span>
-        <Link href="/writing" className="underline underline-offset-4">
-          ← Writing
-        </Link>
-      </footer>
+      <footer className="mt-16" />
     </main>
   );
 }

@@ -5,7 +5,7 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { getMDXComponents } from "@/mdx-components";
-import { formatLongDate } from "@/lib/date";
+import { formatDate, formatLongDate } from "@/lib/date";
 
 export default async function RecipePage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -26,13 +26,23 @@ export default async function RecipePage(props: {
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-            Recipes
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
           </div>
         </div>
-
-        <div className="mt-3 border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
-          Recipe
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          <Link href="/" className="underline underline-offset-4">
+            Journal Cover
+          </Link>
+          <span>
+            Field Notes Appendix · 2 Figures
+          </span>
         </div>
       </header>
 
@@ -91,15 +101,7 @@ export default async function RecipePage(props: {
         />
       </article>
 
-      <footer className="mt-16 text-sm opacity-70">
-        <Link href="/" className="underline underline-offset-4">
-          Home
-        </Link>
-        <span className="mx-2">·</span>
-        <Link href="/recipes" className="underline underline-offset-4">
-          ← Recipes
-        </Link>
-      </footer>
+      <footer className="mt-16" />
     </main>
   );
 }
