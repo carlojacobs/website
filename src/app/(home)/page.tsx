@@ -51,28 +51,35 @@ export default function HomePage() {
   return (
     <main>
       {/* Masthead line */}
-      <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 text-sm">
-        <div className="opacity-75">
-          <span className="font-semibold tracking-tight">Notes & Essays</span>
-          <span className="opacity-60"> · </span>
-          <span className="opacity-60">Carlo Jacobs</span>
+      <header className="mt-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
+          <div className="opacity-75">
+            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="opacity-60"> · </span>
+            <span className="opacity-60">Carlo Jacobs</span>
+          </div>
+
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
+          </div>
         </div>
 
-        <div className="opacity-65">
-          <span className="font-semibold">Vol.</span> 01{" "}
-          <span className="opacity-60">·</span>{" "}
-          <span className="font-semibold">No.</span> 01{" "}
-          <span className="opacity-60">·</span>{" "}
-          <time className="time-meta" dateTime={new Date().toISOString()}>
-            {formatDate(new Date())}
-          </time>
+        <div className="mt-4 flex items-baseline justify-between text-xs uppercase tracking-[0.2em] opacity-55">
+          <span>Issue Summary</span>
+          <span>{posts.length} articles</span>
         </div>
-      </div>
+      </header>
 
       <hr className="my-7 opacity-25" />
 
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:gap-10">
+      <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-12">
   {/* LEFT — FEATURED */}
   <section className="min-w-0">
     <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
@@ -138,12 +145,13 @@ export default function HomePage() {
     )}
   </section>
 
-  {/* RIGHT — TABLE OF CONTENTS */}
+  {/* RIGHT — ALL WRITING */}
   <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start">
-    <div className="border-t border-black/10 pt-6">
-      <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-        Table of Contents
-      </h2>
+    <div>
+      <div className="mb-3 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+        <span>Complete Contents</span>
+        <span className="opacity-70">All Writing</span>
+      </div>
 
       <ul className="space-y-2">
         {posts.map((p) => (
