@@ -23,6 +23,7 @@ html,
 body {
   background-color: #f8f7f4; /* parchment white */
   color: #1f2933; /* near-black, Tailwind gray-900 */
+  scrollbar-gutter: stable;
 }
 
 /* Force ink color for prose content to override preset */
@@ -61,12 +62,26 @@ body {
 html {
   font-size: 110%;
   scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 @supports not (scrollbar-gutter: stable) {
   html {
     overflow-y: scroll;
   }
+}
+
+html.base-ui-disable-scrollbar,
+body.base-ui-disable-scrollbar {
+  scrollbar-width: auto !important;
+  overflow: auto !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+html.base-ui-disable-scrollbar::-webkit-scrollbar,
+body.base-ui-disable-scrollbar::-webkit-scrollbar {
+  display: initial !important;
 }
 
 /* academic touch: tabular numerals */

@@ -3,21 +3,11 @@
 
 import * as React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IssueMeta } from "@/components/issue-meta";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectItem, SelectPopup, SelectTrigger } from "@/components/ui/select";
 
 type IssueOption = {
   value: string;
   label: string;
-  volume: number;
-  number: number;
-  dateISO: string;
 };
 
 export function IssueSelect(props: {
@@ -30,8 +20,7 @@ export function IssueSelect(props: {
   const pathname = usePathname();
 
   const selectedValue = value ?? options[0]?.value ?? "";
-  const selectedOption = options.find((o) => o.value === selectedValue) ?? options[0];
-  const items = options.map((item) => ({ label: item.label, value: item.value }));
+  const selectedLabel = options.find((o) => o.value === selectedValue)?.label ?? "Select issue";
 
   const onValueChange = React.useCallback(
     (next: string | null) => {
@@ -41,32 +30,23 @@ export function IssueSelect(props: {
       const query = params.toString();
       router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
     },
-    [router, pathname, searchParams],
+    [router, searchParams],
   );
 
   if (!options.length) return null;
 
   return (
-    <Select value={selectedValue} onValueChange={onValueChange} items={items} modal={false}>
+    <Select value={selectedValue} onValueChange={onValueChange} items={options}>
       <SelectTrigger
         aria-label="Select issue"
-        className="!h-auto !min-h-0 w-auto min-w-0 items-baseline justify-start gap-1 !border-0 !bg-transparent !px-0 !py-0 !text-sm !leading-none !shadow-none focus-visible:ring-0 [&_[data-slot=select-icon]]:hidden"
+        className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-65"
       >
-        <SelectValue className="sr-only" />
-        {selectedOption ? (
-          <IssueMeta
-            volume={selectedOption.volume}
-            number={selectedOption.number}
-            dateISO={selectedOption.dateISO}
-          />
-        ) : (
-          <span>Select issue</span>
-        )}
+        <span>{selectedLabel}</span>
       </SelectTrigger>
       <SelectPopup>
         {options.map((item) => (
           <SelectItem key={item.value} value={item.value}>
-            <IssueMeta volume={item.volume} number={item.number} dateISO={item.dateISO} />
+            {item.label}
           </SelectItem>
         ))}
       </SelectPopup>
