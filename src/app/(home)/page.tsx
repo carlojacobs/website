@@ -118,16 +118,13 @@ export default function HomePage() {
     {featured ? (
       <div className="space-y-2.5">
         <Link href={featured.url} className="block rounded-none border border-black/10 p-4">
-          <div className="flex items-baseline justify-between text-sm opacity-60">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-              Featured Article
-            </span>
-            <time className="time-citation" dateTime={String(featured.data.created)}>
+          <div className="flex items-baseline justify-between gap-3">
+            <div className="text-lg leading-snug">
+              {featured.data.title}
+            </div>
+            <time className="time-citation text-sm opacity-60" dateTime={String(featured.data.created)}>
               {formatLongDate(featured.data.created)}
             </time>
-          </div>
-          <div className="mt-2 text-lg leading-snug">
-            {featured.data.title}
           </div>
           <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
             Abstract
