@@ -17,7 +17,11 @@ export default function WritingIndexPage() {
           paddingTopClass: "pt-5",
           showConnector: true,
           alignCenter: true,
-          left: <span>Writing Index</span>,
+          left: (
+            <Link href="/" className="underline underline-offset-4">
+              ← Front Cover
+            </Link>
+          ),
           right: <span>{pages.length} {pages.length === 1 ? "writing" : "writings"}</span>,
         }}
       />
@@ -45,11 +49,7 @@ export default function WritingIndexPage() {
       </ul>
 
 
-      <footer className="mt-16 text-sm opacity-70">
-        <Link href="/" className="underline underline-offset-4">
-          Home
-        </Link>
-      </footer>
+      <footer className="mt-16" />
     </main>
   );
 }

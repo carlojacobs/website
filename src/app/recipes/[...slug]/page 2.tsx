@@ -26,7 +26,7 @@ export default async function RecipePage(props: {
           paddingTopClass: "pt-5",
           left: (
             <Link href="/" className="underline underline-offset-4">
-              ← Journal Cover
+              ← Front Cover
             </Link>
           ),
           right: (
