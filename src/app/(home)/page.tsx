@@ -164,6 +164,29 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+
+          <div className="mt-6 border-t border-black/10 pt-3">
+            <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+              Writing Topics
+            </div>
+            {writingTopics.length ? (
+              <p className="leading-7 opacity-85">
+                {writingTopics.map((t, i) => (
+                  <span key={t.slug}>
+                    <Link
+                      href={`/topics/writing/${t.slug}`}
+                      className="underline underline-offset-4 opacity-90"
+                    >
+                      {t.label}
+                    </Link>
+                    {i < writingTopics.length - 1 ? <span className="opacity-50">, </span> : null}
+                  </span>
+                ))}
+              </p>
+            ) : (
+              <p className="text-sm opacity-70">No writing topics yet.</p>
+            )}
+          </div>
         </section>
 
         <section className="min-w-0 lg:border-l lg:border-black/20 lg:pl-8">
@@ -191,41 +214,10 @@ export default function HomePage() {
           ) : (
             <p className="text-sm opacity-70">No recipes yet.</p>
           )}
-        </section>
-      </div>
 
-      <section className="mt-10 border-t border-black/20 pt-4">
-        <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-          Topics Index
-        </h2>
-
-        <div className="space-y-6">
-          <div>
+          <div className="mt-6 border-t border-black/10 pt-3">
             <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-              Writing
-            </div>
-            {writingTopics.length ? (
-              <p className="leading-7 opacity-85">
-                {writingTopics.map((t, i) => (
-                  <span key={t.slug}>
-                    <Link
-                      href={`/topics/writing/${t.slug}`}
-                      className="underline underline-offset-4 opacity-90"
-                    >
-                      {t.label}
-                    </Link>
-                    {i < writingTopics.length - 1 ? <span className="opacity-50">, </span> : null}
-                  </span>
-                ))}
-              </p>
-            ) : (
-              <p className="text-sm opacity-70">No writing topics yet.</p>
-            )}
-          </div>
-
-          <div>
-            <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-              Recipes
+              Recipe Topics
             </div>
             {recipeTopics.length ? (
               <p className="leading-7 opacity-85">
@@ -245,8 +237,8 @@ export default function HomePage() {
               <p className="text-sm opacity-70">No recipe topics yet.</p>
             )}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
 
 
