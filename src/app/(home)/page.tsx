@@ -79,9 +79,9 @@ export default function HomePage() {
       <hr className="my-5 opacity-25" />
 
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-12 lg:divide-x lg:divide-black/10">
+      <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-10">
   {/* LEFT — FEATURED */}
-  <section className="min-w-0 lg:pr-6">
+  <section className="min-w-0">
     <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
       Featured Article
     </h2>
@@ -142,7 +142,7 @@ export default function HomePage() {
   </section>
 
   {/* RIGHT — ALL WRITING */}
-  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:pl-0">
+  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:border-l lg:border-black/10 lg:pl-8">
     <div>
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Complete Contents</span>
