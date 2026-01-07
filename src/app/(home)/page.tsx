@@ -4,8 +4,8 @@ import { writingSource } from "@/lib/writing";
 import { recipesSource } from "@/lib/recipes";
 import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug } from "@/lib/topics";
-import { getWritingBodyText, getWritingFileName, truncateSentenceOrChars } from "@/lib/excerpt";
-import { FEATURED_WRITING_FILENAME, SITE_TITLE, getIssueMeta } from "@/lib/site";
+import { getWritingBodyText, getWritingFileName, truncateSentenceOrChars, truncateWords } from "@/lib/excerpt";
+import { FEATURED_EXCERPT_WORDS, FEATURED_WRITING_FILENAME, SITE_TITLE, getIssueMeta } from "@/lib/site";
 
 // function toMillis(v: unknown): number {
 //   if (v instanceof Date) return v.getTime();
@@ -130,7 +130,7 @@ export default function HomePage() {
             Abstract
           </div>
           <p className="mt-1 text-sm leading-6 opacity-75 text-justify">
-            {truncateSentenceOrChars(getWritingBodyText(featured), 260)}
+            {truncateWords(getWritingBodyText(featured), FEATURED_EXCERPT_WORDS)}
           </p>
           <div className="mt-3 text-xs uppercase tracking-[0.18em] opacity-60">
             Read full text →

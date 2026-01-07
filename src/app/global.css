@@ -35,23 +35,6 @@ body {
   color: #1f2933 !important;
 }
 
-.prose {
-  color: #1f2933;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  color: #1f2933;
-}
-
-.prose {
-  color: #1f2933;
-}
-
 html {
   font-size: 120%;
   scrollbar-gutter: stable;
@@ -61,15 +44,6 @@ html {
   html {
     overflow-y: scroll;
   }
-}
-
-header nav a {
-  opacity: 0.7;
-}
-
-header nav a:hover {
-  opacity: 1;
-  color: #1f4fd8;
 }
 
 /* academic touch: tabular numerals */

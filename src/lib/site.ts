@@ -4,6 +4,9 @@ export const SITE_TITLE = "The Very Unofficial Journal of Notes, Essays & Recipe
 // Featured writing filename, e.g. "How to Write an Essay.md"
 export const FEATURED_WRITING_FILENAME = "Essay Writing Protocol.md";
 
+// Featured excerpt length (words).
+export const FEATURED_EXCERPT_WORDS = 25;
+
 // Journal start date: 7.1.26 (Jan 7, 2026). Used to compute volume/number.
 export const JOURNAL_START_DATE = new Date(Date.UTC(2026, 0, 7));
 

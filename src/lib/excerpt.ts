@@ -98,3 +98,18 @@ export function truncateSentenceOrChars(text: string, maxChars = 160): string {
   if (t.length <= maxChars) return t;
   return `${t.slice(0, maxChars).trimEnd()}…`;
 }
+
+export function truncateChars(text: string, maxChars = 160): string {
+  const t = text.trim();
+  if (!t) return "";
+  if (t.length <= maxChars) return t;
+  return `${t.slice(0, maxChars).trimEnd()}…`;
+}
+
+export function truncateWords(text: string, maxWords = 80): string {
+  const t = text.trim();
+  if (!t) return "";
+  const words = t.split(/\s+/).filter(Boolean);
+  if (words.length <= maxWords) return t;
+  return `${words.slice(0, maxWords).join(" ")}…`;
+}
