@@ -90,7 +90,7 @@ export default function HomePage() {
         />
       </header>
 
-      <hr className="my-5 border-amber-800/15" />
+      <hr className="my-5 opacity-35" />
 
 
       <section className="mb-10">
