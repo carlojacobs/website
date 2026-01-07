@@ -19,18 +19,43 @@ export default async function RecipePage(props: {
 
   return (
     <main>
-      <header className="mb-10">
+      <header className="mt-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
+          <div className="opacity-75">
+            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="opacity-60"> · </span>
+            <span className="opacity-60">Carlo Jacobs</span>
+          </div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+            Recipes
+          </div>
+        </div>
+
+        <div className="mt-3 border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          Recipe
+        </div>
+      </header>
+
+      <hr className="my-5 opacity-35" />
+
+      <div className="mb-10">
         <p className="text-sm opacity-70">
+          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+            Published:
+          </span>
           <time className="time-citation" dateTime={String(page.data.created)}>
             {formatLongDate(page.data.created)}
           </time>
         </p>
 
-        <h1 className="mt-2 text-3xl font-semibold leading-tight">
+        <h1 className="mt-2 text-2xl font-semibold leading-tight">
           {page.data.title}
         </h1>
 
         <div className="mt-3 text-sm opacity-70">
+          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+            Topics:
+          </span>
           {page.data.categories.map((c: string, i: number) => (
             <span key={c}>
               <Link
@@ -55,7 +80,7 @@ export default async function RecipePage(props: {
             </>
           ) : null}
         </div>
-      </header>
+      </div>
 
       <article className="prose prose-neutral max-w-none">
         <MDX
@@ -66,6 +91,10 @@ export default async function RecipePage(props: {
       </article>
 
       <footer className="mt-16 text-sm opacity-70">
+        <Link href="/" className="underline underline-offset-4">
+          Home
+        </Link>
+        <span className="mx-2">·</span>
         <Link href="/recipes" className="underline underline-offset-4">
           ← Recipes
         </Link>
