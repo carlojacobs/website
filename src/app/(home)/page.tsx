@@ -79,9 +79,9 @@ export default function HomePage() {
       <hr className="my-7 opacity-25" />
 
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-12">
+      <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-12 lg:divide-x lg:divide-black/10">
   {/* LEFT — FEATURED */}
-  <section className="min-w-0">
+  <section className="min-w-0 lg:pr-6">
     <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
       Featured Article
     </h2>
@@ -105,7 +105,7 @@ export default function HomePage() {
           <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-55">
             Abstract
           </div>
-          <p className="text-sm leading-6 opacity-75 max-w-[42ch]">
+          <p className="text-sm leading-6 opacity-75 text-justify">
             {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function HomePage() {
   </section>
 
   {/* RIGHT — ALL WRITING */}
-  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start">
+  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:pl-0">
     <div>
       <div className="mb-3 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Complete Contents</span>
