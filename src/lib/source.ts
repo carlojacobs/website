@@ -6,9 +6,9 @@ import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
   baseUrl: "/docs",
-  source: toFumadocsSource(docs, []),
+  source: toFumadocsSource(docs, []) as any,
   plugins: [lucideIconsPlugin()],
-});
+}) as any;
 
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, "image.png"];
@@ -20,7 +20,7 @@ export function getPageImage(page: InferPageType<typeof source>) {
 }
 
 export async function getLLMText(page: InferPageType<typeof source>) {
-  const processed = await page.data.getText('processed');
+  const processed = await (page.data as any).getText("processed");
 
   return `# ${page.data.title}
 

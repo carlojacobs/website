@@ -1,7 +1,8 @@
-import { getPageImage, source } from '@/lib/source';
+import { getPageImage, source } from "@/lib/source";
 import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { generate as DefaultImage } from 'fumadocs-ui/og';
+import type { InferPageType } from "fumadocs-core/source";
 
 export const revalidate = false;
 
@@ -20,7 +21,7 @@ export async function GET(_req: Request, { params }: RouteContext<'/og/docs/[...
 }
 
 export function generateStaticParams() {
-  return source.getPages().map((page) => ({
+  return source.getPages().map((page: InferPageType<typeof source>) => ({
     lang: page.locale,
     slug: getPageImage(page).segments,
   }));

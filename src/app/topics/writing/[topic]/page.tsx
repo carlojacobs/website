@@ -32,8 +32,15 @@ export default async function WritingTopicPage(props: {
     <main>
       <JournalHeader
         strip={{
+          className: "text-amber-800/70 opacity-100",
           paddingTopClass: "pt-5",
-          left: <span>Writing Topics</span>,
+          showConnector: true,
+          alignCenter: true,
+          left: (
+            <Link href="/" className="underline underline-offset-4">
+              ← Front Cover
+            </Link>
+          ),
           right: (
             <span>{matching.length} {matching.length === 1 ? "writing" : "writings"}</span>
           ),
@@ -62,15 +69,7 @@ export default async function WritingTopicPage(props: {
         ))}
       </ul>
 
-      <footer className="mt-16 text-sm opacity-70">
-        <Link href="/" className="underline underline-offset-4">
-          Home
-        </Link>
-        <span className="mx-2">·</span>
-        <Link href="/writing" className="underline underline-offset-4">
-          ← Writing
-        </Link>
-      </footer>
+      <footer className="mt-16" />
     </main>
   );
 }
