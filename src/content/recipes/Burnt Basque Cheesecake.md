@@ -1,8 +1,7 @@
 ---
 created: 2025.12.18 12:28
-categories:
-  - "[[Recipes]]"
-updated: 2026-01-07T16:43
+updated: 2026-01-07T16:47
+title: Burnt Basque Cheesecake
 ---
 Ingredients (ALL SHOULD BE ROOM TEMPERATURE):
 

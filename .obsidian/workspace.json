@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/writing/My Thoughts on Taking Notes.md",
+                "file": "src/content/recipes/Burnt Basque Cheesecake.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "My Thoughts on Taking Notes"
+              "title": "Burnt Basque Cheesecake"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/My Thoughts on Taking Notes.md",
+                "file": "src/content/recipes/Burnt Basque Cheesecake.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of My Thoughts on Taking Notes"
+              "title": "Outline of Burnt Basque Cheesecake"
             }
           },
           {
@@ -204,12 +204,17 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "src/app/recipes/[...slug]/page.tsx",
+    "src/app/recipes/[...slug]",
+    "src/app/recipes/page.tsx",
+    "src/app/recipes",
+    "src/lib/recipes.ts",
+    "src/content/writing/My Thoughts on Taking Notes.md",
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "src/content/recipes",
     "AGENTS.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
     "src/content/writing/The Traveler.md",
-    "src/content/writing/My Thoughts on Taking Notes.md",
     "src/content/writing/Hoe te Studeren.md",
     "src/content/writing/Essay Writing Protocol.md",
     "src/lib/excerpt.ts",
@@ -217,11 +222,7 @@
     "source.config.ts",
     "remark-excerpt.ts",
     "excerpt-",
-    "src/lib/remark/excerpt.ts",
-    "src/lib/remark",
-    "src/lib/date.ts",
     "README.md",
-    "src/app/topics/[topic]/page.tsx",
     "src/content/writing/test-post.md",
     "src/content/writing/my-post.md",
     "src/content/pages/now.md",
@@ -239,7 +240,6 @@
     "Weekly/2026–02 (Conflicted copy Carlos-MacBook-Pro.local 202601060833).md",
     "Daily/2026.01.05.md",
     "202601051928.md",
-    "Weekly/2026–02.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",

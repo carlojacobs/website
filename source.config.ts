@@ -109,6 +109,12 @@ export const writing = defineCollections({
   schema: writingFrontmatterSchema
 });
 
+export const recipes = defineCollections({
+  type: "doc",
+  dir: "./src/content/recipes",
+  schema: writingFrontmatterSchema
+});
+
 export const pages = defineCollections({
   type: "doc",
   dir: "src/content/pages",

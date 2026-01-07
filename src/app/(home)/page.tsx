@@ -1,6 +1,7 @@
 // src/app/(home)/page.tsx
 import Link from "next/link";
 import { writingSource } from "@/lib/writing";
+import { recipesSource } from "@/lib/recipes";
 import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug, topicLabel } from "@/lib/topics";
 import { getWritingBodyText, truncateSentenceOrChars } from "@/lib/excerpt";
@@ -33,6 +34,10 @@ export default function HomePage() {
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
 
   const latest = posts[0];
+  const recipes = recipesSource
+    .getPages()
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
 
   const topics = Array.from(
     new Map(
@@ -72,7 +77,9 @@ export default function HomePage() {
 
         <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Issue Summary</span>
-          <span>{posts.length} articles · All Writing</span>
+          <span>
+            {posts.length} writings · {recipes.length} recipes
+          </span>
         </div>
       </header>
 
@@ -146,7 +153,7 @@ export default function HomePage() {
     <div>
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Complete Contents</span>
-        <span className="opacity-50">TOC</span>
+        <span className="opacity-50">Writing</span>
       </div>
 
       <ul className="space-y-1.5">
@@ -164,6 +171,33 @@ export default function HomePage() {
           </li>
         ))}
       </ul>
+
+      <div className="my-6 border-t border-black/10 pt-3">
+        <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+          <span>Complete Contents</span>
+          <span className="opacity-50">Recipes</span>
+        </div>
+
+        {recipes.length ? (
+          <ul className="space-y-1.5">
+            {recipes.map((r) => (
+              <li key={r.url} className="flex items-baseline gap-3">
+                <time
+                  dateTime={String(r.data.created)}
+                  className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+                >
+                  {formatYearMonth(r.data.created)}
+                </time>
+                <Link href={r.url} className="underline underline-offset-4 text-[14px] leading-snug">
+                  {r.data.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm opacity-70">No recipes yet.</p>
+        )}
+      </div>
     </div>
   </aside>
 </div>
