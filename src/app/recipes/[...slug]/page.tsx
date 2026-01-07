@@ -40,7 +40,7 @@ export default async function RecipePage(props: {
             </time>
           </div>
         </div>
-        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] text-amber-800/70">
           <Link href="/" className="underline underline-offset-4">
             ← Journal Cover
           </Link>
