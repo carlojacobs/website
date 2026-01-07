@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { recipesSource } from "@/lib/recipes";
 import { formatYearMonth, toMillis } from "@/lib/date";
-import { JournalMasthead, JournalStrip } from "@/components/journal";
+import { JournalHeader } from "@/components/journal";
 
 export default function RecipesIndexPage() {
   const pages = recipesSource
@@ -12,16 +12,16 @@ export default function RecipesIndexPage() {
 
   return (
     <main>
-      <header className="mt-6">
-        <JournalMasthead />
-        <JournalStrip
-          paddingTopClass="pt-5"
-          left={<span>Recipes Index</span>}
-          right={<span>{pages.length} {pages.length === 1 ? "recipe" : "recipes"}</span>}
-        />
-      </header>
-
-      <hr className="my-5 opacity-35" />
+      <JournalHeader
+        strip={{
+          className: "text-amber-800/70 opacity-100",
+          paddingTopClass: "pt-5",
+          showConnector: true,
+          alignCenter: true,
+          left: <span>Recipes Index</span>,
+          right: <span>{pages.length} {pages.length === 1 ? "recipe" : "recipes"}</span>,
+        }}
+      />
 
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Recipes</span>

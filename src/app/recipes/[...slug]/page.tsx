@@ -6,7 +6,7 @@ import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { getMDXComponents } from "@/mdx-components";
 import { formatLongDate } from "@/lib/date";
-import { JournalMasthead, JournalStrip } from "@/components/journal";
+import { JournalHeader } from "@/components/journal";
 
 export default async function RecipePage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -19,25 +19,22 @@ export default async function RecipePage(props: {
   const MDX = page.data.body;
   return (
     <main>
-      <header className="mt-6">
-        <JournalMasthead />
-        <JournalStrip
-          className="text-amber-800/70 opacity-100"
-          paddingTopClass="pt-5"
-          left={
+      <JournalHeader
+        strip={{
+          className: "text-amber-800/70 opacity-100",
+          paddingTopClass: "pt-5",
+          left: (
             <Link href="/" className="underline underline-offset-4">
               ← Journal Cover
             </Link>
-          }
-          right={
+          ),
+          right: (
             <Link href="/recipes" className="underline underline-offset-4">
               All Recipes →
             </Link>
-          }
-        />
-      </header>
-
-      <hr className="my-5 opacity-35" />
+          ),
+        }}
+      />
 
       <div className="mb-10">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-70">

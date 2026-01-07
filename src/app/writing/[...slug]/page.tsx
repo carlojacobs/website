@@ -7,7 +7,7 @@ import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { formatLongDate } from "@/lib/date";
 import { getWritingBodyText } from "@/lib/excerpt";
-import { JournalMasthead, JournalStrip } from "@/components/journal";
+import { JournalHeader } from "@/components/journal";
 
 export default async function WritingPostPage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -24,25 +24,22 @@ export default async function WritingPostPage(props: {
 
   return (
     <main>
-      <header className="mt-6">
-        <JournalMasthead />
-        <JournalStrip
-          className="text-amber-800/70 opacity-100"
-          paddingTopClass="pt-5"
-          left={
+      <JournalHeader
+        strip={{
+          className: "text-amber-800/70 opacity-100",
+          paddingTopClass: "pt-5",
+          left: (
             <Link href="/" className="underline underline-offset-4">
               ← Journal Cover
             </Link>
-          }
-          right={
+          ),
+          right: (
             <Link href="/writing" className="underline underline-offset-4">
               All Writings →
             </Link>
-          }
-        />
-      </header>
-
-      <hr className="my-5 opacity-35" />
+          ),
+        }}
+      />
 
       <div className="mb-10">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-70">

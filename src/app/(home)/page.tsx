@@ -2,11 +2,16 @@
 import Link from "next/link";
 import { writingSource } from "@/lib/writing";
 import { recipesSource } from "@/lib/recipes";
-import { formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
+import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug } from "@/lib/topics";
 import { getWritingBodyText, getWritingFileName, truncateWords } from "@/lib/excerpt";
-import { FEATURED_EXCERPT_WORDS, FEATURED_WRITING_FILENAME } from "@/lib/site";
-import { JournalMasthead, JournalStrip } from "@/components/journal";
+import {
+  FEATURED_EXCERPT_WORDS,
+  FEATURED_WRITING_FILENAME,
+  getIssueMetaForDate,
+} from "@/lib/site";
+import { JournalHeader } from "@/components/journal";
+import { IssueSelect } from "@/components/issue-select";
 
 // function toMillis(v: unknown): number {
 //   if (v instanceof Date) return v.getTime();
@@ -29,16 +34,81 @@ import { JournalMasthead, JournalStrip } from "@/components/journal";
 //   return `${s.slice(0, 4)} · ${s.slice(5, 7)}`;
 // }
 
-export default function HomePage() {
-  const posts = writingSource
+export default async function HomePage(props: {
+  searchParams?: Promise<{ issue?: string }>;
+}) {
+  const allPosts = writingSource
     .getPages()
     .filter((p) => !p.data.draft)
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
 
-  const recipes = recipesSource
+  const allRecipes = recipesSource
     .getPages()
     .filter((p) => !p.data.draft)
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
+
+  const issueKeyFromDate = (input: unknown): string | null => {
+    const d = input instanceof Date ? input : new Date(String(input));
+    if (Number.isNaN(d.getTime())) return null;
+    const year = d.getUTCFullYear();
+    const month = String(d.getUTCMonth() + 1).padStart(2, "0");
+    return `${year}-${month}`;
+  };
+
+  const isOnOrBeforeIssue = (key: string | null, issue: string | null): boolean => {
+    if (!issue) return true;
+    if (!key) return false;
+    return key <= issue;
+  };
+
+  const issueMap = new Map<string, Date>();
+  for (const p of [...allPosts, ...allRecipes]) {
+    const d = p.data.created instanceof Date ? p.data.created : new Date(String(p.data.created));
+    if (Number.isNaN(d.getTime())) continue;
+    const key = issueKeyFromDate(d);
+    if (!key) continue;
+    const prev = issueMap.get(key);
+    if (!prev || d.getTime() > prev.getTime()) issueMap.set(key, d);
+  }
+
+  const issueOptions = Array.from(issueMap.entries())
+    .map(([key, date]) => {
+      const meta = getIssueMetaForDate(date);
+      return {
+        value: key,
+        date,
+        volume: meta.volume,
+        number: meta.number,
+        dateISO: date.toISOString(),
+        label: `Vol. ${String(meta.volume).padStart(2, "0")} No. ${String(meta.number).padStart(
+          2,
+          "0",
+        )} · ${formatDate(date)}`,
+      };
+    })
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+  const issueSelectOptions = issueOptions.map(({ value, label, volume, number, dateISO }) => ({
+    value,
+    label,
+    volume,
+    number,
+    dateISO,
+  }));
+
+  const params = props.searchParams ? await props.searchParams : undefined;
+  const requestedIssue = params?.issue;
+  const activeIssue =
+    requestedIssue && issueOptions.some((o) => o.value === requestedIssue)
+      ? requestedIssue
+      : issueOptions[0]?.value ?? null;
+
+  const posts = activeIssue
+    ? allPosts.filter((p) => isOnOrBeforeIssue(issueKeyFromDate(p.data.created), activeIssue))
+    : allPosts;
+  const recipes = activeIssue
+    ? allRecipes.filter((p) => isOnOrBeforeIssue(issueKeyFromDate(p.data.created), activeIssue))
+    : allRecipes;
 
   const writingTopics = Array.from(
     new Map(
@@ -65,18 +135,24 @@ export default function HomePage() {
 
 
   const featured =
-    posts.find((p) => getWritingFileName(p) === FEATURED_WRITING_FILENAME) ?? null;
+    posts.find((p) => getWritingFileName(p) === FEATURED_WRITING_FILENAME) ?? posts[0] ?? null;
 
   return (
     <main>
       {/* Masthead line */}
-      <header className="mt-6">
-        <JournalMasthead />
-        <JournalStrip
-          paddingTopClass="pt-5"
-          className="text-amber-800/70 opacity-100"
-          left={<span>Issue Summary</span>}
-          right={
+      <JournalHeader
+        mastheadRight={
+          issueOptions.length ? (
+            <IssueSelect options={issueSelectOptions} value={activeIssue} />
+          ) : undefined
+        }
+        strip={{
+          paddingTopClass: "pt-5",
+          className: "text-amber-800/70 opacity-100",
+          showConnector: true,
+          alignCenter: true,
+          left: <span>Issue Summary</span>,
+          right: (
             <span>
               {posts.length}{" "}
               <Link href="/writing" className="underline underline-offset-4">
@@ -87,11 +163,9 @@ export default function HomePage() {
                 {recipes.length === 1 ? "recipe" : "recipes"}
               </Link>
             </span>
-          }
-        />
-      </header>
-
-      <hr className="my-5 opacity-35" />
+          ),
+        }}
+      />
 
 
       <section className="mb-10">
@@ -124,12 +198,7 @@ export default function HomePage() {
           </div>
         </Link>
       </div>
-    ) : (
-      <p className="text-sm opacity-70">
-        Featured article not found. Set <code>FEATURED_WRITING_FILENAME</code> in{" "}
-        <code>src/lib/site.ts</code>.
-      </p>
-    )}
+    ) : null}
       </section>
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">

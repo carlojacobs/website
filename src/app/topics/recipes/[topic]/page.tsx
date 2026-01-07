@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { formatYearMonth, toMillis } from "@/lib/date";
-import { JournalMasthead, JournalStrip } from "@/components/journal";
+import { JournalHeader } from "@/components/journal";
 
 export default async function RecipeTopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -30,16 +30,13 @@ export default async function RecipeTopicPage(props: {
 
   return (
     <main>
-      <header className="mt-6">
-        <JournalMasthead />
-        <JournalStrip
-          paddingTopClass="pt-5"
-          left={<span>Recipe Topics</span>}
-          right={<span>{matching.length} {matching.length === 1 ? "recipe" : "recipes"}</span>}
-        />
-      </header>
-
-      <hr className="my-5 opacity-35" />
+      <JournalHeader
+        strip={{
+          paddingTopClass: "pt-5",
+          left: <span>Recipe Topics</span>,
+          right: <span>{matching.length} {matching.length === 1 ? "recipe" : "recipes"}</span>,
+        }}
+      />
 
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>{pretty}</span>
