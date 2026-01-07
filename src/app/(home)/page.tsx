@@ -106,7 +106,7 @@ export default function HomePage() {
               {featured.data.title}
             </div>
             <time
-              className="time-citation text-sm opacity-60 text-amber-700"
+              className="time-citation text-sm opacity-60"
               dateTime={String(featured.data.created)}
             >
               {formatLongDate(featured.data.created)}
