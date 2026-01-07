@@ -33,7 +33,7 @@ export default function WritingIndexPage() {
 
         <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Writing Index</span>
-          <span>{pages.length} piece{pages.length === 1 ? "" : "s"}</span>
+          <span>{pages.length} {pages.length === 1 ? "writing" : "writings"}</span>
         </div>
       </header>
 

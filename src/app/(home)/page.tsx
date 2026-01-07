@@ -88,7 +88,14 @@ export default function HomePage() {
         <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Issue Summary</span>
           <span>
-            {posts.length} writings · {recipes.length} recipes
+            {posts.length}{" "}
+            <Link href="/writing" className="underline underline-offset-4">
+              {posts.length === 1 ? "writing" : "writings"}
+            </Link>{" "}
+            · {recipes.length}{" "}
+            <Link href="/recipes" className="underline underline-offset-4">
+              {recipes.length === 1 ? "recipe" : "recipes"}
+            </Link>
           </span>
         </div>
       </header>

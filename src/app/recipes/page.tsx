@@ -32,7 +32,7 @@ export default function RecipesIndexPage() {
 
         <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Recipes Index</span>
-          <span>{pages.length} recipe{pages.length === 1 ? "" : "s"}</span>
+          <span>{pages.length} {pages.length === 1 ? "recipe" : "recipes"}</span>
         </div>
       </header>
 
