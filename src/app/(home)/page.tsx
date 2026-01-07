@@ -70,13 +70,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between border-t border-black/10 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
           <span>Issue Summary</span>
           <span>{posts.length} articles · All Writing</span>
         </div>
       </header>
 
-      <hr className="my-5 opacity-25" />
+      <hr className="my-5 opacity-35" />
 
 
       <div className="grid gap-12 lg:grid-cols-[1fr_24rem] lg:gap-10">
@@ -142,7 +142,7 @@ export default function HomePage() {
   </section>
 
   {/* RIGHT — ALL WRITING */}
-  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:border-l lg:border-black/10 lg:pl-8">
+  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:border-l lg:border-black/20 lg:pl-8">
     <div>
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         <span>Complete Contents</span>
