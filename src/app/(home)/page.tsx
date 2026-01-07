@@ -50,27 +50,6 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Header (small + simple, like Steph’s) */}
-      <header className="mb-14 flex items-baseline justify-between gap-6">
-        <Link href="/" className="text-xl font-semibold tracking-tight">
-          {/* Change this to your name/site title */}
-          Carlo Jacobs
-        </Link>
-
-        <nav className="flex gap-4 text-sm opacity-70">
-          <Link href="/writing" className="hover:opacity-100">
-            Writing
-          </Link>
-          {/* If you add /about and /now later, these will work */}
-          <Link href="/about" className="hover:opacity-100">
-            About
-          </Link>
-          <Link href="/now" className="hover:opacity-100">
-            Now
-          </Link>
-        </nav>
-      </header>
-
       {/* Masthead line */}
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 text-sm">
         <div className="opacity-75">
