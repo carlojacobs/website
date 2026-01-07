@@ -74,6 +74,7 @@ export default function HomePage() {
         <JournalMasthead />
         <JournalStrip
           paddingTopClass="pt-5"
+          className="text-amber-800/70 opacity-100"
           left={<span>Issue Summary</span>}
           right={
             <span>
