@@ -94,18 +94,18 @@ export default function HomePage() {
           </time>
         </div>
 
-        <div className="text-2xl leading-snug">
+        <div className="text-xl leading-snug">
           <Link href={latest.url} className="underline underline-offset-4">
             {latest.data.title}
           </Link>
         </div>
 
         {/* Abstract block */}
-        <div className="border-l border-black/10 pl-4">
+        <div className="border-t border-black/10 pt-3">
           <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-55">
             Abstract
           </div>
-          <p className="text-sm leading-6 opacity-75">
+          <p className="text-sm leading-6 opacity-75 max-w-[42ch]">
             {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
           </p>
         </div>
