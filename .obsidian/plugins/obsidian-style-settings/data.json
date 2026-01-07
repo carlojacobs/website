@@ -1,0 +1,11 @@
+{
+  "minimal-advanced@@cursor": "default",
+  "minimal-advanced@@mobile-toolbar-off": false,
+  "minimal-style@@sidebar-tabs-style": "sidebar-tabs-default",
+  "minimal-style@@vault-profile-display": "vault-profile-default",
+  "minimal-style@@hide-help": true,
+  "minimal-style@@hide-settings": false,
+  "minimal-style@@active-line-on": false,
+  "minimal-style@@checkbox-shape": "checkbox-square",
+  "minimal-style@@minimal-strike-lists": true
+}

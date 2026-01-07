@@ -1,0 +1,21 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "created": "date",
+    "read": "date",
+    "seen": "date",
+    "finished": "date",
+    "rating": "number",
+    "start": "date",
+    "end": "date",
+    "companions": "multitext",
+    "type": "multitext",
+    "reviewed": "checkbox",
+    "year": "number",
+    "relevance": "number",
+    "last edited": "datetime",
+    "author": "text"
+  }
+}
