@@ -4,7 +4,8 @@ import { writingSource } from "@/lib/writing";
 import { recipesSource } from "@/lib/recipes";
 import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug } from "@/lib/topics";
-import { getWritingBodyText, truncateSentenceOrChars } from "@/lib/excerpt";
+import { getWritingBodyText, getWritingFileName, truncateSentenceOrChars } from "@/lib/excerpt";
+import { FEATURED_WRITING_FILENAME, SITE_TITLE, getIssueMeta } from "@/lib/site";
 
 // function toMillis(v: unknown): number {
 //   if (v instanceof Date) return v.getTime();
@@ -63,24 +64,30 @@ export default function HomePage() {
 
 
 
+  const issue = getIssueMeta();
+  const featured =
+    posts.find((p) => getWritingFileName(p) === FEATURED_WRITING_FILENAME) ?? null;
+
   return (
     <main>
       {/* Masthead line */}
       <header className="mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
           <div className="opacity-75">
-            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>
 
           <div className="opacity-65">
-            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="font-semibold">Vol.</span>{" "}
+            {String(issue.volume).padStart(2, "0")}{" "}
             <span className="opacity-60">·</span>{" "}
-            <span className="font-semibold">No.</span> 01{" "}
+            <span className="font-semibold">No.</span>{" "}
+            {String(issue.number).padStart(2, "0")}{" "}
             <span className="opacity-60">·</span>{" "}
-            <time className="time-meta" dateTime={new Date().toISOString()}>
-              {formatDate(new Date())}
+            <time className="time-meta" dateTime={issue.updatedAt.toISOString()}>
+              {formatDate(issue.updatedAt)}
             </time>
           </div>
         </div>
@@ -108,38 +115,39 @@ export default function HomePage() {
           Featured Article
         </h2>
 
-        {latest ? (
-          <div className="space-y-2.5">
-            <div className="text-sm opacity-60">
-              <time className="time-citation" dateTime={String(latest.data.created)}>
-                {formatLongDate(latest.data.created)}
-              </time>
-            </div>
+    {featured ? (
+      <div className="space-y-2.5">
+        <div className="text-sm opacity-60">
+          <time className="time-citation" dateTime={String(featured.data.created)}>
+            {formatLongDate(featured.data.created)}
+          </time>
+        </div>
 
-            <div className="text-xl leading-snug">
-              <Link href={latest.url} className="underline underline-offset-4">
-                {latest.data.title}
-              </Link>
-            </div>
+        <div className="text-xl leading-snug">
+          <Link href={featured.url} className="underline underline-offset-4">
+            {featured.data.title}
+          </Link>
+        </div>
 
-            <p className="text-sm leading-6 opacity-75 text-justify">
-              <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-                Abstract:
-              </span>
-              {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
-            </p>
+        <p className="text-sm leading-6 opacity-75 text-justify">
+          <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
+            Abstract:
+          </span>
+          {truncateSentenceOrChars(getWritingBodyText(featured), 260)}
+        </p>
 
-            <div>
-              <Link href={latest.url} className="text-sm underline underline-offset-4 opacity-70">
-                Read full text →
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <p className="text-sm opacity-70">
-            No posts yet. Add one in <code>src/content/writing</code>.
-          </p>
-        )}
+        <div>
+          <Link href={featured.url} className="text-sm underline underline-offset-4 opacity-70">
+            Read full text →
+          </Link>
+        </div>
+      </div>
+    ) : (
+      <p className="text-sm opacity-70">
+        Featured article not found. Set <code>FEATURED_WRITING_FILENAME</code> in{" "}
+        <code>src/lib/site.ts</code>.
+      </p>
+    )}
       </section>
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">

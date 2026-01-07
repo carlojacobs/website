@@ -67,6 +67,11 @@ function resolveWritingFileFromUrl(url: string): string | null {
   return null;
 }
 
+export function getWritingFileName(page: { url: string }): string | null {
+  const filePath = resolveWritingFileFromUrl(page.url);
+  return filePath ? path.basename(filePath) : null;
+}
+
 
 export function getWritingBodyText(page: { url: string }): string {
     const filePath = resolveWritingFileFromUrl(page.url);

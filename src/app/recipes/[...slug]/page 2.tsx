@@ -6,6 +6,7 @@ import { recipesSource } from "@/lib/recipes";
 import { topicSlug } from "@/lib/topics";
 import { getMDXComponents } from "@/mdx-components";
 import { formatLongDate } from "@/lib/date";
+import { SITE_TITLE } from "@/lib/site";
 
 export default async function RecipePage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -22,7 +23,7 @@ export default async function RecipePage(props: {
       <header className="mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
           <div className="opacity-75">
-            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>

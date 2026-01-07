@@ -204,6 +204,7 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "src/lib/site.ts",
     "src/app/recipes/[...slug]/page 2.tsx",
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "src/content/writing/The Traveler.md",
@@ -223,7 +224,6 @@
     "src/app/topics/[topic]/page.tsx",
     "src/app/recipes/[...slug]/page.tsx",
     "src/app/recipes/[...slug]",
-    "src/app/recipes/page.tsx",
     "AGENTS.md",
     "src/content/writing/Essay Writing Protocol.md",
     "README.md",

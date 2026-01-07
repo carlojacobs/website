@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { topicSlug } from "@/lib/topics";
 import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
+import { SITE_TITLE, getIssueMeta } from "@/lib/site";
 
 export default async function WritingTopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -27,23 +28,27 @@ export default async function WritingTopicPage(props: {
       .flatMap((p) => p.data.categories as string[])
       .find((c) => topicSlug(String(c)) === topic) as string) ?? topic;
 
+  const issue = getIssueMeta();
+
   return (
     <main>
       <header className="mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
           <div className="opacity-75">
-            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="font-semibold tracking-tight">{SITE_TITLE}</span>
             <span className="opacity-60"> · </span>
             <span className="opacity-60">Carlo Jacobs</span>
           </div>
 
           <div className="opacity-65">
-            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="font-semibold">Vol.</span>{" "}
+            {String(issue.volume).padStart(2, "0")}{" "}
             <span className="opacity-60">·</span>{" "}
-            <span className="font-semibold">No.</span> 01{" "}
+            <span className="font-semibold">No.</span>{" "}
+            {String(issue.number).padStart(2, "0")}{" "}
             <span className="opacity-60">·</span>{" "}
-            <time className="time-meta" dateTime={new Date().toISOString()}>
-              {formatDate(new Date())}
+            <time className="time-meta" dateTime={issue.updatedAt.toISOString()}>
+              {formatDate(issue.updatedAt)}
             </time>
           </div>
         </div>
