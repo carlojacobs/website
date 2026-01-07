@@ -63,7 +63,7 @@ export function IssueSelect(props: {
           <span>Select issue</span>
         )}
       </SelectTrigger>
-      <SelectPopup>
+      <SelectPopup alignItemWithTrigger={false}>
         {options.map((item) => (
           <SelectItem key={item.value} value={item.value}>
             <IssueMeta volume={item.volume} number={item.number} dateISO={item.dateISO} />

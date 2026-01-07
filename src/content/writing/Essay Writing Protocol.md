@@ -3,7 +3,7 @@ created: 2025.09.18 11:31
 categories:
   - writing
 finished: 2025-09-22
-updated: 2026-01-07T21:10
+updated: 2026-01-08T00:31
 title: How to Write an Essay
 ---
 This is a note that summarises the essay [writing guide](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://jordanbpeterson.com/wp-content/uploads/2018/02/Essay_Writing_Guide.docx&ved=2ahUKEwiltvbI_-GPAxUq0gIHHX2dAhUQFnoECAsQAQ&usg=AOvVaw3KyLd4DMN7itJ47rOkO__z) by Jordan B Peterson. I came across this guide a while ago, but did not read it fully. I tried his app called [Essay](https://essay.app) for a while, and did produce some of my best writing using that (although it was not a lot). However, I feel like it is time to fully internalise this skill and this guide, so that I do not need to depend on a tool to write a good essay. And I want to write good essay, I want to start writing more. More and more, I hear people I look up to say that they started writing early in their careers. I'm starting now.
@@ -20,7 +20,7 @@ To essay means to attempt or try. To write an essay about a topic you care about
 > Don’t ever underestimate the power of words. Without them, we would still be living in trees. So when you are writing an essay, you are harnessing the full might of culture to your life. That is why you write an essay (even if it has been assigned). Forget that, and you are doing something stupid, trivial and dull. Remember it, and you are conquering the unknown.
 
 Halfway through writing this summary, I lost motivation for summarising the first two parts. What I really want is a short version of the writing protocol, which will follow now.
-# Essay writing protocol
+## Essay writing protocol
 
 1. **Select a topic** — Select a topic that is important to you and formulate an appropriate question that is central to this topic. This is the question you will try to answer in your essay.
 2. **Size it up** — If you wish, specify the length of your essay in words and/or pages. Now add a margin of 25% for your first draft. This way, you have something to throw away at the end, so you can keep only the good parts.

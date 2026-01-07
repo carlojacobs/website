@@ -16,7 +16,6 @@ export default function Layout({ children }: LayoutProps<"/">) {
             <footer className="mt-16 border-t border-black/20 pt-5 text-xs">
               <div className="flex flex-wrap items-baseline justify-between gap-3 uppercase tracking-[0.18em] opacity-60">
                 <span>Correspondence</span>
-                <span>Suggested Citation</span>
               </div>
               <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-80">
                 <span>Amsterdam</span>
