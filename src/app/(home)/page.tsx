@@ -51,13 +51,13 @@ export default function HomePage() {
   return (
     <main>
       {/* Header (small + simple, like Steph’s) */}
-      <header className="mb-12 flex items-baseline justify-between gap-6">
-        <Link href="/" className="text-lg font-semibold">
+      <header className="mb-14 flex items-baseline justify-between gap-6">
+        <Link href="/" className="text-xl font-semibold tracking-tight">
           {/* Change this to your name/site title */}
           Carlo Jacobs
         </Link>
 
-        <nav className="flex gap-4 text-sm opacity-80">
+        <nav className="flex gap-4 text-sm opacity-70">
           <Link href="/writing" className="hover:opacity-100">
             Writing
           </Link>
@@ -73,13 +73,13 @@ export default function HomePage() {
 
       {/* Masthead line */}
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 text-sm">
-        <div className="opacity-80">
-          <span className="font-semibold">Notes & Essays</span>
+        <div className="opacity-75">
+          <span className="font-semibold tracking-tight">Notes & Essays</span>
           <span className="opacity-60"> · </span>
           <span className="opacity-60">Carlo Jacobs</span>
         </div>
 
-        <div className="opacity-70">
+        <div className="opacity-65">
           <span className="font-semibold">Vol.</span> 01{" "}
           <span className="opacity-60">·</span>{" "}
           <span className="font-semibold">No.</span> 01{" "}
@@ -90,25 +90,25 @@ export default function HomePage() {
         </div>
       </div>
 
-      <hr className="my-6 opacity-30" />
+      <hr className="my-7 opacity-25" />
 
 
       <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:gap-10">
   {/* LEFT — FEATURED */}
   <section className="min-w-0">
-    <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+    <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
       Featured Article
     </h2>
 
     {latest ? (
       <div className="space-y-3">
-        <div className="text-sm opacity-70">
+        <div className="text-sm opacity-60">
           <time className="time-citation" dateTime={String(latest.data.created)}>
             {formatLongDate(latest.data.created)}
           </time>
         </div>
 
-        <div className="text-xl leading-snug">
+        <div className="text-2xl leading-snug">
           <Link href={latest.url} className="underline underline-offset-4">
             {latest.data.title}
           </Link>
@@ -116,16 +116,16 @@ export default function HomePage() {
 
         {/* Abstract block */}
         <div className="border-l border-black/10 pl-4">
-          <div className="mb-1 text-xs font-semibold uppercase tracking-widest opacity-60">
+          <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-55">
             Abstract
           </div>
-          <p className="text-sm leading-6 opacity-80">
+          <p className="text-sm leading-6 opacity-75">
             {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
           </p>
         </div>
 
         <div>
-          <Link href={latest.url} className="text-sm underline underline-offset-4 opacity-80">
+          <Link href={latest.url} className="text-sm underline underline-offset-4 opacity-70">
             Read full text →
           </Link>
         </div>
@@ -136,15 +136,15 @@ export default function HomePage() {
       </p>
     )}
 
-    <hr className="my-10 opacity-30" />
+    <hr className="my-10 opacity-25" />
 
     {/* TOPICS INDEX */}
-    <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+    <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
       Topics Index
     </h2>
 
     {topics.length ? (
-      <p className="leading-7">
+      <p className="leading-7 opacity-85">
         {topics.map((t, i) => (
           <span key={t.slug}>
             <Link href={`/topics/${t.slug}`} className="underline underline-offset-4 opacity-90">
@@ -162,7 +162,7 @@ export default function HomePage() {
   {/* RIGHT — TABLE OF CONTENTS */}
   <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start">
     <div className="border-t border-black/10 pt-6">
-      <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+      <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
         Table of Contents
       </h2>
 
@@ -171,11 +171,11 @@ export default function HomePage() {
           <li key={p.url} className="flex items-baseline gap-3">
             <time
               dateTime={String(p.data.created)}
-              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+              className="time-index relative top-[1px] w-20 shrink-0 text-sm text-gray-500/90"
             >
               {formatYearMonth(p.data.created)}
             </time>
-            <Link href={p.url} className="underline underline-offset-4">
+            <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
               {p.data.title}
             </Link>
           </li>
