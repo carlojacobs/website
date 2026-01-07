@@ -1,16 +1,10 @@
 // src/app/writing/page.tsx
 import Link from "next/link";
 import { writingSource } from "@/lib/writing";
-import { formatYearMonth, toMillis } from "@/lib/date";
-
-function toDateValue(v: string | Date): number {
-  if (v instanceof Date) return v.getTime();
-  const t = Date.parse(v);
-  return Number.isFinite(t) ? t : 0;
-}
+import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
 
 export default function WritingIndexPage() {
-    const pages = writingSource
+  const pages = writingSource
     .getPages()
     .filter((p) => !p.data.draft)
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
@@ -18,29 +12,54 @@ export default function WritingIndexPage() {
 
   return (
     <main>
-      <header className="mb-10">
-        <h1 className="text-2xl font-semibold">Writing</h1>
-        <p className="mt-2 text-sm opacity-70">
-          My thoughts on paper.
-        </p>
+      <header className="mt-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
+          <div className="opacity-75">
+            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="opacity-60"> · </span>
+            <span className="opacity-60">Carlo Jacobs</span>
+          </div>
+
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
+          </div>
+        </div>
+
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          <span>Writing Index</span>
+          <span>{pages.length} piece{pages.length === 1 ? "" : "s"}</span>
+        </div>
       </header>
 
-    <ul className="space-y-2">
-      {pages.map((p) => (
-        <li key={p.url} className="flex items-baseline gap-3">
-          <time
-            className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
-            dateTime={String(p.data.created)}
-          >
-            {formatYearMonth(p.data.created)}
-          </time>
+      <hr className="my-5 opacity-35" />
 
-          <Link href={p.url} className="underline underline-offset-4">
-            {p.data.title}
-          </Link>
-        </li>
-      ))}
-    </ul>
+      <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+        <span>Writing</span>
+        <span className="opacity-50">Complete Contents</span>
+      </div>
+
+      <ul className="space-y-1.5">
+        {pages.map((p) => (
+          <li key={p.url} className="flex items-baseline gap-3">
+            <time
+              className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+              dateTime={String(p.data.created)}
+            >
+              {formatYearMonth(p.data.created)}
+            </time>
+
+            <Link href={p.url} className="underline underline-offset-4 text-[14px] leading-snug">
+              {p.data.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
 
       <footer className="mt-16 text-sm opacity-70">

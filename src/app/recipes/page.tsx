@@ -1,7 +1,7 @@
 // src/app/recipes/page.tsx
 import Link from "next/link";
 import { recipesSource } from "@/lib/recipes";
-import { formatYearMonth, toMillis } from "@/lib/date";
+import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
 
 export default function RecipesIndexPage() {
   const pages = recipesSource
@@ -11,24 +11,49 @@ export default function RecipesIndexPage() {
 
   return (
     <main>
-      <header className="mb-10">
-        <h1 className="text-2xl font-semibold">Recipes</h1>
-        <p className="mt-2 text-sm opacity-70">
-          Notes from the kitchen.
-        </p>
+      <header className="mt-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
+          <div className="opacity-75">
+            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="opacity-60"> · </span>
+            <span className="opacity-60">Carlo Jacobs</span>
+          </div>
+
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
+          </div>
+        </div>
+
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          <span>Recipes Index</span>
+          <span>{pages.length} recipe{pages.length === 1 ? "" : "s"}</span>
+        </div>
       </header>
 
-      <ul className="space-y-2">
+      <hr className="my-5 opacity-35" />
+
+      <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+        <span>Recipes</span>
+        <span className="opacity-50">Complete Contents</span>
+      </div>
+
+      <ul className="space-y-1.5">
         {pages.map((p) => (
           <li key={p.url} className="flex items-baseline gap-3">
             <time
-              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+              className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
               dateTime={String(p.data.created)}
             >
               {formatYearMonth(p.data.created)}
             </time>
 
-            <Link href={p.url} className="underline underline-offset-4">
+            <Link href={p.url} className="underline underline-offset-4 text-[14px] leading-snug">
               {p.data.title}
             </Link>
           </li>
