@@ -25,7 +25,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
                 <span>All rights reserved for this content.</span>
               </div>
               <p className="mt-2 text-sm opacity-70">
-                {SITE_TITLE}. Amsterdam.
+                The author declares no conflict of interest.
               </p>
             </footer>
           </main>
