@@ -152,8 +152,8 @@ export default function HomePage() {
   <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start lg:border-l lg:border-black/20 lg:pl-8">
     <div>
       <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-        <span>Complete Contents</span>
-        <span className="opacity-50">Writing</span>
+        <span>Writing</span>
+        <span className="opacity-50">Complete Contents</span>
       </div>
 
       <ul className="space-y-1.5">
@@ -174,8 +174,8 @@ export default function HomePage() {
 
       <div className="my-6 border-t border-black/10 pt-3">
         <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-          <span>Complete Contents</span>
-          <span className="opacity-50">Recipes</span>
+          <span>Recipes</span>
+          <span className="opacity-50">Complete Contents</span>
         </div>
 
         {recipes.length ? (
