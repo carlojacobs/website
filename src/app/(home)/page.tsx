@@ -71,90 +71,121 @@ export default function HomePage() {
         </nav>
       </header>
 
-      {/* Latest */}
-      <section className="mb-12">
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide opacity-70">
-          Latest
-        </h2>
+      {/* Masthead line */}
+      <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 text-sm">
+        <div className="opacity-80">
+          <span className="font-semibold">Notes & Essays</span>
+          <span className="opacity-60"> · </span>
+          <span className="opacity-60">Carlo Jacobs</span>
+        </div>
 
-        {latest ? (
-          <Link
-            href={latest.url}
-            className="block space-y-2 no-underline hover:opacity-90"
-          >
-            <div className="text-sm opacity-70">
-              <i>{formatLongDate(latest.data.created)}</i>
-            </div>
+        <div className="opacity-70">
+          <span className="font-semibold">Vol.</span> 01{" "}
+          <span className="opacity-60">·</span>{" "}
+          <span className="font-semibold">No.</span> 01{" "}
+          <span className="opacity-60">·</span>{" "}
+          <time className="time-meta" dateTime={new Date().toISOString()}>
+            {formatDate(new Date())}
+          </time>
+        </div>
+      </div>
 
-            <div className="text-lg underline underline-offset-4">
-              {latest.data.title}
-            </div>
+      <hr className="my-6 opacity-30" />
 
-            <p className="text-sm leading-6 opacity-80">
-              {truncateSentenceOrChars(getWritingBodyText(latest), 180)}
-            </p>
+
+      <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:gap-10">
+  {/* LEFT — FEATURED */}
+  <section className="min-w-0">
+    <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+      Featured Article
+    </h2>
+
+    {latest ? (
+      <div className="space-y-3">
+        <div className="text-sm opacity-70">
+          <time className="time-citation" dateTime={String(latest.data.created)}>
+            {formatLongDate(latest.data.created)}
+          </time>
+        </div>
+
+        <div className="text-xl leading-snug">
+          <Link href={latest.url} className="underline underline-offset-4">
+            {latest.data.title}
           </Link>
-        ) : (
-          <p className="text-sm opacity-70">
-            No posts yet. Add one in <code>src/content/writing</code>.
+        </div>
+
+        {/* Abstract block */}
+        <div className="border-l border-black/10 pl-4">
+          <div className="mb-1 text-xs font-semibold uppercase tracking-widest opacity-60">
+            Abstract
+          </div>
+          <p className="text-sm leading-6 opacity-80">
+            {truncateSentenceOrChars(getWritingBodyText(latest), 260)}
           </p>
-        )}
+        </div>
 
-      </section>
+        <div>
+          <Link href={latest.url} className="text-sm underline underline-offset-4 opacity-80">
+            Read full text →
+          </Link>
+        </div>
+      </div>
+    ) : (
+      <p className="text-sm opacity-70">
+        No posts yet. Add one in <code>src/content/writing</code>.
+      </p>
+    )}
 
-      <hr className="my-10 opacity-30" />
+    <hr className="my-10 opacity-30" />
 
-      {/* Topics */}
-      <section className="mb-12">
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide opacity-70">
-          Topics
-        </h2>
+    {/* TOPICS INDEX */}
+    <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+      Topics Index
+    </h2>
 
-        {topics.length ? (
-          <p className="leading-7">
-            {topics.map((t, i) => (
-              <span key={t.slug}>
-                <Link
-                  href={`/topics/${t.slug}`}
-                  className="underline underline-offset-4 opacity-90"
-                >
-                  {t.label}
-                </Link>
-                {i < topics.length - 1 ? <span className="opacity-50">, </span> : null}
-              </span>
-            ))}
-          </p>
+    {topics.length ? (
+      <p className="leading-7">
+        {topics.map((t, i) => (
+          <span key={t.slug}>
+            <Link href={`/topics/${t.slug}`} className="underline underline-offset-4 opacity-90">
+              {t.label}
+            </Link>
+            {i < topics.length - 1 ? <span className="opacity-50">, </span> : null}
+          </span>
+        ))}
+      </p>
+    ) : (
+      <p className="text-sm opacity-70">No topics yet.</p>
+    )}
+  </section>
 
-        ) : (
-          <p className="text-sm opacity-70">No topics yet.</p>
-        )}
-      </section>
+  {/* RIGHT — TABLE OF CONTENTS */}
+  <aside className="min-w-0 lg:sticky lg:top-10 lg:self-start">
+    <div className="border-t border-black/10 pt-6">
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest opacity-70">
+        Table of Contents
+      </h2>
 
-      <hr className="my-10 opacity-30" />
+      <ul className="space-y-2">
+        {posts.map((p) => (
+          <li key={p.url} className="flex items-baseline gap-3">
+            <time
+              dateTime={String(p.data.created)}
+              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+            >
+              {formatYearMonth(p.data.created)}
+            </time>
+            <Link href={p.url} className="underline underline-offset-4">
+              {p.data.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </aside>
+</div>
 
-      {/* Writing list */}
-      <section>
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide opacity-70">
-          Writing
-        </h2>
 
-        <ul className="space-y-2">
-          {posts.map((p) => (
-            <li key={p.url} className="flex items-baseline gap-3">
-              <span className="relative top-[1px] w-20 shrink-0 text-base text-gray-500">
-                {formatYearMonth(p.data.created)}
-              </span>
-              <Link
-                href={p.url}
-                className="underline underline-offset-4"
-              >
-                {p.data.title}
-              </Link>
-            </li>
-
-          ))}
-        </ul>
-      </section>
 
       {/* <footer className="mt-16 text-sm opacity-60">
         <span>{new Date().getFullYear()}</span>

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { topicSlug } from "@/lib/topics";
 
-import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
+import { formatYearMonth, toMillis } from "@/lib/date";
 
 export default async function TopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -51,9 +51,12 @@ export default async function TopicPage(props: {
       <ul className="space-y-2">
         {matching.map((p) => (
           <li key={p.url} className="flex items-baseline gap-3">
-            <span className="relative top-[1px] w-20 shrink-0 text-base text-gray-500">
+            <time
+              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+              dateTime={String(p.data.created)}
+            >
               {formatYearMonth(p.data.created)}
-            </span>
+            </time>
 
             <Link href={p.url} className="underline underline-offset-4">
               {p.data.title}

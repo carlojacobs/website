@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/writing/Essay Writing Protocol.md",
+                "file": "src/content/writing/My Thoughts on Taking Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Essay Writing Protocol"
+              "title": "My Thoughts on Taking Notes"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/Essay Writing Protocol.md",
+                "file": "src/content/writing/My Thoughts on Taking Notes.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Essay Writing Protocol"
+              "title": "Outline of My Thoughts on Taking Notes"
             }
           },
           {
@@ -204,7 +204,9 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "AGENTS.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
+    "src/content/writing/The Traveler.md",
     "src/content/writing/My Thoughts on Taking Notes.md",
     "src/content/writing/Hoe te Studeren.md",
     "src/content/writing/Essay Writing Protocol.md",
@@ -238,7 +240,6 @@
     "202601051928.md",
     "Weekly/2026–02.md",
     "Weekly/2025–01.md",
-    "Discussiepunten.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",

@@ -28,3 +28,17 @@ header nav a:hover {
   opacity: 1;
   color: #1f4fd8;
 }
+
+/* academic touch: tabular numerals */
+.time-citation,
+.time-index,
+.time-meta {
+  font-variant-numeric: tabular-nums;
+}
+
+.time-citation {
+  font-style: italic;
+}
+
+/* slightly tighter headings like print */
+h1, h2 { letter-spacing: -0.01em; }

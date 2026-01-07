@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
+import { formatLongDate } from "@/lib/date";
 
 export default async function WritingPostPage(props: {
   params: Promise<{ slug?: string[] }>;
@@ -21,7 +21,11 @@ export default async function WritingPostPage(props: {
   return (
     <main>
       <header className="mb-10">
-        <p className="text-sm opacity-70"><i>{formatLongDate(page.data.created)}</i></p>
+        <p className="text-sm opacity-70">
+          <time className="time-citation" dateTime={String(page.data.created)}>
+            {formatLongDate(page.data.created)}
+          </time>
+        </p>
 
         <h1 className="mt-2 text-3xl font-semibold leading-tight">
           {page.data.title}
@@ -43,7 +47,12 @@ export default async function WritingPostPage(props: {
         {page.data.updated ? (
             <>
             <span className="mx-2">·</span>
-            <span><i>last updated {formatLongDate(page.data.updated)}</i></span>
+            <span>
+              last updated{" "}
+              <time className="time-citation" dateTime={String(page.data.updated)}>
+                {formatLongDate(page.data.updated)}
+              </time>
+            </span>
             </>
         ) : null}
         </div>
