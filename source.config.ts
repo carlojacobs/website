@@ -35,9 +35,6 @@ const permalinks: Record<string, string> = Object.fromEntries(
   files.map((f) => [f, toPermalink(f)]),
 );
 
-// source.config.ts (inside)
-import { z } from "zod";
-
 const dateLike = z.union([
   z.string(), // "2026-01-07T11:05"
   z.date(),   // in case parser returns Date

@@ -10,10 +10,19 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const MDX = page.data.body;
+  // Fumadocs exposes MDX body at runtime, but the type doesn't include it.
+  const MDX = (page.data as { body: React.ComponentType<{ components?: unknown }> }).body;
+
+  const data = page.data as {
+    body: React.ComponentType;
+    toc?: unknown;
+    full?: unknown;
+    title?: string;
+    description?: string;
+  };
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage toc={data.toc as any} full={data.full as any}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
