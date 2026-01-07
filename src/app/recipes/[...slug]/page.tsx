@@ -59,7 +59,7 @@ export default async function RecipePage(props: {
           {page.data.categories.map((c: string, i: number) => (
             <span key={c}>
               <Link
-                href={`/topics/${topicSlug(c)}`}
+                href={`/topics/recipes/${topicSlug(c)}`}
                 className="underline underline-offset-4"
               >
                 {c}

@@ -60,7 +60,7 @@ export default async function WritingPostPage(props: {
           {page.data.categories.map((c: string, i: number) => (
             <span key={c}>
               <Link
-                href={`/topics/${topicSlug(c)}`}
+                href={`/topics/writing/${topicSlug(c)}`}
                 className="underline underline-offset-4"
               >
                 {c}

@@ -1,0 +1,85 @@
+// src/app/topics/recipes/[topic]/page.tsx
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { recipesSource } from "@/lib/recipes";
+import { topicSlug } from "@/lib/topics";
+import { formatYearMonth, toMillis } from "@/lib/date";
+
+export default async function RecipeTopicPage(props: {
+  params: Promise<{ topic: string }>;
+}) {
+  const { topic } = await props.params;
+
+  const allRecipes = recipesSource
+    .getPages()
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
+
+  const matching = allRecipes.filter((p) => {
+    const cats = Array.isArray(p.data.categories) ? p.data.categories : [];
+    return cats.some((c: string) => topicSlug(String(c)) === topic);
+  });
+
+  if (matching.length === 0) notFound();
+
+  const pretty =
+    (matching
+      .flatMap((p) => p.data.categories as string[])
+      .find((c) => topicSlug(String(c)) === topic) as string) ?? topic;
+
+  return (
+    <main>
+      <header className="mb-10">
+        <p className="text-sm opacity-70">
+          <Link href="/" className="underline underline-offset-4">
+            Home
+          </Link>
+          <span className="mx-2">/</span>
+          <Link href="/recipes" className="underline underline-offset-4">
+            Recipes
+          </Link>
+        </p>
+
+        <h1 className="mt-2 text-3xl font-semibold leading-tight">{pretty}</h1>
+        <p className="mt-2 text-sm opacity-70">
+          {matching.length} recipe{matching.length === 1 ? "" : "s"}
+        </p>
+      </header>
+
+      <ul className="space-y-2">
+        {matching.map((p) => (
+          <li key={p.url} className="flex items-baseline gap-3">
+            <time
+              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+              dateTime={String(p.data.created)}
+            >
+              {formatYearMonth(p.data.created)}
+            </time>
+
+            <Link href={p.url} className="underline underline-offset-4">
+              {p.data.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <footer className="mt-16 text-sm opacity-70">
+        <Link href="/recipes" className="underline underline-offset-4">
+          ← Recipes
+        </Link>
+      </footer>
+    </main>
+  );
+}
+
+export async function generateStaticParams() {
+  const recipes = recipesSource.getPages().filter((p) => !p.data.draft);
+  const slugs = new Set<string>();
+
+  for (const p of recipes) {
+    const cats = Array.isArray(p.data.categories) ? p.data.categories : [];
+    for (const c of cats) slugs.add(topicSlug(String(c)));
+  }
+
+  return Array.from(slugs).map((topic) => ({ topic }));
+}
