@@ -204,6 +204,7 @@
   },
   "active": "e07d35effbacacb3",
   "lastOpenFiles": [
+    "src/app/recipes/[...slug]/page 2.tsx",
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "src/content/writing/The Traveler.md",
     "src/content/writing/My Thoughts on Taking Notes.md",
@@ -239,7 +240,6 @@
     "Item dates.md",
     "Project Hail Mary.md",
     "When Breath Becomes Air.md",
-    "Kafka on the Shore.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",

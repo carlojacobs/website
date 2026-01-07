@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { writingSource } from "@/lib/writing";
 import { topicSlug } from "@/lib/topics";
-import { formatYearMonth, toMillis } from "@/lib/date";
+import { formatDate, formatYearMonth, toMillis } from "@/lib/date";
 
 export default async function WritingTopicPage(props: {
   params: Promise<{ topic: string }>;
@@ -29,34 +29,49 @@ export default async function WritingTopicPage(props: {
 
   return (
     <main>
-      <header className="mb-10">
-        <p className="text-sm opacity-70">
-          <Link href="/" className="underline underline-offset-4">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/writing" className="underline underline-offset-4">
-            Writing
-          </Link>
-        </p>
+      <header className="mt-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm">
+          <div className="opacity-75">
+            <span className="font-semibold tracking-tight">Notes & Essays</span>
+            <span className="opacity-60"> · </span>
+            <span className="opacity-60">Carlo Jacobs</span>
+          </div>
 
-        <h1 className="mt-2 text-3xl font-semibold leading-tight">{pretty}</h1>
-        <p className="mt-2 text-sm opacity-70">
-          {matching.length} piece{matching.length === 1 ? "" : "s"}
-        </p>
+          <div className="opacity-65">
+            <span className="font-semibold">Vol.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <span className="font-semibold">No.</span> 01{" "}
+            <span className="opacity-60">·</span>{" "}
+            <time className="time-meta" dateTime={new Date().toISOString()}>
+              {formatDate(new Date())}
+            </time>
+          </div>
+        </div>
+
+        <div className="mt-3 flex items-baseline justify-between border-t border-black/20 pt-2 text-xs uppercase tracking-[0.2em] opacity-55">
+          <span>Writing Topics</span>
+          <span>{matching.length} {matching.length === 1 ? "writing" : "writings"}</span>
+        </div>
       </header>
 
-      <ul className="space-y-2">
+      <hr className="my-5 opacity-35" />
+
+      <div className="mb-2 flex items-baseline justify-between text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+        <span>{pretty}</span>
+        <span className="opacity-50">Topic Index</span>
+      </div>
+
+      <ul className="space-y-1.5">
         {matching.map((p) => (
           <li key={p.url} className="flex items-baseline gap-3">
             <time
-              className="time-index relative top-[1px] w-20 shrink-0 text-base text-gray-500"
+              className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
               dateTime={String(p.data.created)}
             >
               {formatYearMonth(p.data.created)}
             </time>
 
-            <Link href={p.url} className="underline underline-offset-4">
+            <Link href={p.url} className="underline underline-offset-4 text-[14px] leading-snug">
               {p.data.title}
             </Link>
           </li>
@@ -64,6 +79,10 @@ export default async function WritingTopicPage(props: {
       </ul>
 
       <footer className="mt-16 text-sm opacity-70">
+        <Link href="/" className="underline underline-offset-4">
+          Home
+        </Link>
+        <span className="mx-2">·</span>
         <Link href="/writing" className="underline underline-offset-4">
           ← Writing
         </Link>

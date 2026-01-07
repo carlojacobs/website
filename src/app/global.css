@@ -20,6 +20,38 @@ body {
   color: #1f2933; /* near-black, Tailwind gray-900 */
 }
 
+/* Force ink color for prose content to override preset */
+.prose {
+  color: #1f2933 !important;
+  --tw-prose-body: #1f2933;
+  --tw-prose-headings: #1f2933;
+  --tw-prose-quotes: #1f2933;
+  --tw-prose-bold: #1f2933;
+  --tw-prose-counters: #1f2933;
+  --tw-prose-bullets: #1f2933;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6, p, li, blockquote, code, pre, strong, em) {
+  color: #1f2933 !important;
+}
+
+.prose {
+  color: #1f2933;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #1f2933;
+}
+
+.prose {
+  color: #1f2933;
+}
+
 html {
   scrollbar-gutter: stable;
 }
