@@ -40,6 +40,20 @@ body {
   color: #1f2933 !important;
 }
 
+.prose a,
+.prose :where(a) {
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  text-decoration-color: currentColor !important;
+}
+
+.prose a[href^="http"]::after,
+.prose :where(a[href^="http"])::after {
+  content: " ↗";
+  font-size: 0.9em;
+}
+
 html {
   font-size: 110%;
   scrollbar-gutter: stable;
