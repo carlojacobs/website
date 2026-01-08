@@ -1,6 +1,6 @@
 ---
 created: 2026-01-08T11:50
-updated: 2026-01-08T13:43
+updated: 2026-01-08T13:46
 title: Crème Brûlée
 categories:
   - deserts
@@ -22,5 +22,4 @@ categories:
 4. Voeg de warme melk met vanille aan het mengsel toe en meng goed.
 5. Bak voor 1:00h a 1:15h in de oven op 95° — kijk of ze klaar zijn door voorzichtig aan het rooster te schudden, ze moeten stevig maar nog wel wat zacht in het midden zijn, pas de temperatuur en baktijd hierop aan.
 6. Zet de crèmes in de ijskast voor een paar uur.
-7. Bestrooi de crèmes vlak voor het serveren met rietsuiker en brand erop los.j
-
+7. Bestrooi de crèmes vlak voor het serveren met rietsuiker en brand erop los.
