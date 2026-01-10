@@ -43,7 +43,14 @@ export default function MedIndexPage() {
     .map(([slug, label]) => ({ slug, label }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
-  const timelineItems = timeline;
+  const timelineItems = timeline as Array<{
+    dateISO: string;
+    endISO?: string;
+    title: string;
+    note?: string;
+  }>;
+
+  const formatRange = (start: string) => formatYearMonth(start);
 
   return (
     <main>
@@ -140,12 +147,14 @@ export default function MedIndexPage() {
                 className="time-index w-16 absolute -translate-x-24 top-0 shrink-0 text-xs text-gray-500/90"
                 dateTime={item.dateISO}
               >
-                {formatYearMonth(item.dateISO)}
+                {formatRange(item.dateISO)}
               </time>
               <div className="absolute top-[2px] left-0 -translate-x-7 size-2.5 rounded-full border-fd-border border-2 bg-[#f8f7f4]"/>
               <div className="space-y-1.5">
                 <div className="text-sm leading-none font-semibold">{item.title}</div>
-                <p className="text-sm leading-none opacity-70">{item.note}</p>
+                <div className="text-sm leading-none opacity-0" aria-hidden="true">
+                  {item.note ?? ""}
+                </div>
               </div>
             </li>
           ))}
