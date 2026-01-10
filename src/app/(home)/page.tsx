@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { writingSource } from "@/lib/writing";
 import { recipesSource } from "@/lib/recipes";
+import { medSource } from "@/lib/med";
 import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/date";
 import { topicSlug } from "@/lib/topics";
 import { getWritingBodyText, getWritingFileName, truncateWords } from "@/lib/excerpt";
@@ -48,6 +49,8 @@ export default async function HomePage(props: {
     .getPages()
     .filter((p) => !p.data.draft)
     .sort((a, b) => toMillis(b.data.created) - toMillis(a.data.created));
+
+  const medCount = medSource.getPages().filter((p) => !p.data.draft).length;
 
   const issueKeyFromDate = (input: unknown): string | null => {
     const d = input instanceof Date ? input : new Date(String(input));
@@ -173,6 +176,10 @@ export default async function HomePage(props: {
               · {recipes.length}{" "}
               <Link href="/recipes" className="underline underline-offset-4">
                 {recipes.length === 1 ? "recipe" : "recipes"}
+              </Link>{" "}
+              · {medCount}{" "}
+              <Link href="/med" className="underline underline-offset-4">
+                {medCount === 1 ? "med school entry" : "med school entries"}
               </Link>
             </span>
           ),

@@ -17,6 +17,10 @@ function toPermalink(relPath: string): string {
     return "/writing/" + noExt.replace(/^writing\//, "");
   }
 
+  if (noExt.startsWith("med/")) {
+    return "/med/" + noExt.replace(/^med\//, "");
+  }
+
   if (noExt.startsWith("pages/")) {
     const slug = noExt.replace(/^pages\//, "");
     if (slug === "index") return "/";
@@ -109,6 +113,12 @@ export const writing = defineCollections({
 export const recipes = defineCollections({
   type: "doc",
   dir: "./src/content/recipes",
+  schema: writingFrontmatterSchema
+});
+
+export const med = defineCollections({
+  type: "doc",
+  dir: "./src/content/med",
   schema: writingFrontmatterSchema
 });
 

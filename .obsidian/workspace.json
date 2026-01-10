@@ -11,10 +11,14 @@
             "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "src/content/writing/Essay Writing Protocol.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Essay Writing Protocol"
             }
           }
         ]
@@ -136,12 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "src/content/writing/Essay Writing Protocol.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Essay Writing Protocol"
             }
           },
           {
@@ -200,41 +205,42 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "src/content/med/timeline.json",
+    "src/lib/med.ts",
+    "src/content/med/Clinical Pearl - Antibiotic Timeouts.md",
+    "src/content/med/Clinical Pearl - Atrial Fibrillation Anticoagulation.md",
+    "src/content/med/Clinical Pearl - Acute Kidney Injury First Pass.md",
+    "src/content/med/Rotation Log - Obstetrics & Gynecology Week 4.md",
+    "src/content/med/Rotation Log - Psychiatry Consults Week 2.md",
+    "src/content/med/Rotation Log - Emergency Medicine Week 2.md",
+    "src/app/med/page.tsx",
+    "src/content/writing/The Traveler.md",
+    "src/content/writing/Essay Writing Protocol.md",
+    "src/app/topics/med/[topic]/page.tsx",
+    "src/app/topics/med/[topic]",
+    "src/app/topics/med",
+    "src/app/med/[...slug]/page.tsx",
+    "src/app/med/[...slug]",
+    "src/app/med",
+    "src/content/med/Clinical Pearl - Chest Pain First Pass.md",
+    "src/content/med/Clinical Pearl - Hyponatremia First Pass.md",
+    "src/content/med/Rotation Log - Pediatrics Night Shift.md",
+    "src/content/med/Rotation Log - Surgery Week 3.md",
+    "src/content/med/Rotation Log - Internal Medicine Week 1.md",
+    "src/content/med",
     "src/content/writing/Weekly review protocol.md",
     "src/content/recipes/Crème Brûlée.md",
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "AGENTS.md",
-    "src/content/writing/Essay Writing Protocol.md",
     "node_modules/@netlify",
-    "netlify.toml",
     "src/content/recipes/Pasta alla Norcina.md",
-    "src/components/ui/select 2.tsx",
-    "src/components/issue-select 2.tsx",
-    "src/lib/utils.ts",
-    "components.json",
-    "src/components/issue-meta.tsx",
-    "src/components/ui/select.tsx",
-    "src/components/ui",
-    "src/components/issue-select.tsx",
     "src/content/writing/My Thoughts on Taking Notes.md",
-    "src/content/writing/The Traveler.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
     "src/content/writing/Hoe te Studeren.md",
     "src/lib/The Traveler.md",
     "src/lib/On Ideas That Don't Get to Be Realised.md",
     "src/lib/My Thoughts on Taking Notes.md",
     "src/lib/Hoe te Studeren.md",
-    "README.md",
-    "src/content/writing/test-post.md",
-    "src/content/writing/my-post.md",
-    "src/content/pages/now.md",
-    "src/content/pages/about.md",
-    "src/app/writing/my-post.md",
-    "Appje naar Nicole.md",
-    "Daily/2026.01.06.md",
-    "202601061710.md",
-    "Bedale rewax log.md",
-    "Bellroy Slim Sleeve order date.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",
