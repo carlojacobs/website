@@ -43,7 +43,7 @@ export default function MedIndexPage() {
     .map(([slug, label]) => ({ slug, label }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
-  const timelineItems = timeline as Array<{
+  const timelineItems = [...timeline].reverse() as Array<{
     dateISO: string;
     endISO?: string;
     title: string;
@@ -142,14 +142,14 @@ export default function MedIndexPage() {
         <ol className="space-y-1.5 pl-6 ml-[79px] relative">
           <div className="h-full absolute bg-fd-border my-1 w-0.5 left-0 rounded-full" />
           {timelineItems.map((item) => (
-            <li key={item.title} className="flex items-baseline gap-4 relative">
+            <li key={item.title} className="relative flex items-start gap-4">
               <time
-                className="time-index w-16 absolute -translate-x-24 top-0 shrink-0 text-xs text-gray-500/90"
+                className="time-index w-16 absolute -translate-x-24 top-0 shrink-0 text-xs text-gray-500/90 leading-none"
                 dateTime={item.dateISO}
               >
                 {formatRange(item.dateISO)}
               </time>
-              <div className="absolute top-[2px] left-0 -translate-x-7 size-2.5 rounded-full border-fd-border border-2 bg-[#f8f7f4]"/>
+              <div className="absolute top-[1px] left-0 -translate-x-7 size-2.5 rounded-full border-fd-border border-2 bg-[#f8f7f4]"/>
               <div className="space-y-1.5">
                 <div className="text-sm leading-none font-semibold">{item.title}</div>
                 <div className="text-sm leading-none opacity-0" aria-hidden="true">
