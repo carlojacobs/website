@@ -179,7 +179,7 @@ export default async function HomePage(props: {
               </Link>{" "}
               · {medCount}{" "}
               <Link href="/med" className="underline underline-offset-4">
-                {medCount === 1 ? "med school entry" : "med school entries"}
+                De Coschap Kronieken
               </Link>
             </span>
           ),

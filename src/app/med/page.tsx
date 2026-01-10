@@ -71,13 +71,11 @@ export default function MedIndexPage() {
 
       <section className="mb-10">
         <div className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
-          Clinical Rotations & Medical School
+          Geneeskunde Master 2025
         </div>
-        <h1 className="mt-2 text-2xl font-semibold leading-tight">Field Notes, Pearls, and Practice</h1>
+        <h1 className="mt-2 text-2xl font-semibold leading-tight">De Coschap Kronieken</h1>
         <p className="mt-3 text-sm leading-6 opacity-75">
-          This section keeps the running diary of rotations and a set of compact notes that
-          translate patient encounters into study material. It is not a protocol library; it is
-          memory, structure, and small lessons I want to keep for later.
+          Mijn opslagplek voor de lessen, ervaringen en verhalen die ik tijdens mijn coschap opdoe.
         </p>
       </section>
 
