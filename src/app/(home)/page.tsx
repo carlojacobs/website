@@ -6,12 +6,14 @@ import { formatDate, formatYearMonth, toMillis, formatLongDate } from "@/lib/dat
 import { topicSlug } from "@/lib/topics";
 import { getWritingBodyText, getWritingFileName, truncateWords } from "@/lib/excerpt";
 import {
+  ENABLE_ISSUE_SELECT,
   FEATURED_EXCERPT_WORDS,
   FEATURED_WRITING_FILENAME,
   getIssueMetaForDate,
 } from "@/lib/site";
 import { JournalHeader } from "@/components/journal";
 import { IssueSelect } from "@/components/issue-select";
+import { IssueMeta } from "@/components/issue-meta";
 
 // function toMillis(v: unknown): number {
 //   if (v instanceof Date) return v.getTime();
@@ -102,6 +104,8 @@ export default async function HomePage(props: {
     requestedIssue && issueOptions.some((o) => o.value === requestedIssue)
       ? requestedIssue
       : issueOptions[0]?.value ?? null;
+  const displayIssue =
+    issueOptions.find((o) => o.value === activeIssue) ?? issueOptions[0] ?? null;
 
   const posts = activeIssue
     ? allPosts.filter((p) => isOnOrBeforeIssue(issueKeyFromDate(p.data.created), activeIssue))
@@ -143,7 +147,15 @@ export default async function HomePage(props: {
       <JournalHeader
         mastheadRight={
           issueOptions.length ? (
-            <IssueSelect options={issueSelectOptions} value={activeIssue} />
+            ENABLE_ISSUE_SELECT ? (
+              <IssueSelect options={issueSelectOptions} value={activeIssue} />
+            ) : displayIssue ? (
+              <IssueMeta
+                volume={displayIssue.volume}
+                number={displayIssue.number}
+                dateISO={displayIssue.dateISO}
+              />
+            ) : undefined
           ) : undefined
         }
         strip={{

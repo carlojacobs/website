@@ -11,14 +11,10 @@
             "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/content/writing/Weekly review protocol.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Weekly review protocol"
+              "title": "New tab"
             }
           }
         ]
@@ -140,13 +136,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/Weekly review protocol.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Weekly review protocol"
+              "title": "Outline"
             }
           },
           {
@@ -199,14 +194,14 @@
       "random-note:Open random note": false,
       "zk-prefixer:Create new unique note": false,
       "publish:Publish changes...": false,
-      "periodic-notes:Open today": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "periodic-notes:Open today": false
     }
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "src/content/recipes/Crème Brûlée.md",
     "src/content/writing/Weekly review protocol.md",
+    "src/content/recipes/Crème Brûlée.md",
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "AGENTS.md",
     "src/content/writing/Essay Writing Protocol.md",

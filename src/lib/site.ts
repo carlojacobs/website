@@ -12,6 +12,9 @@ export const FEATURED_WRITING_FILENAME = "Essay Writing Protocol.md";
 // Featured excerpt length (words).
 export const FEATURED_EXCERPT_WORDS = 25;
 
+// Toggle: allow selecting previous issues from the masthead.
+export const ENABLE_ISSUE_SELECT = false;
+
 // Journal start date: 2025-01-25 (Jan 25, 2025). Earliest publish date; used for volume/number.
 export const JOURNAL_START_DATE = new Date(Date.UTC(2025, 0, 25));
 
