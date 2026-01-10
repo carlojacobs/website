@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/writing/Swans.md",
+                "file": "src/content/writing/The Traveler.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Swans"
+              "title": "The Traveler"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/writing/Swans.md",
+                "file": "src/content/writing/The Traveler.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Swans"
+              "title": "Outline of The Traveler"
             }
           },
           {
@@ -205,12 +205,14 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "src/content/med/Neurologisch onderzoek.md",
     "src/content/writing/Swans.md",
+    "src/content/writing/Essay Writing Protocol.md",
+    "src/content/writing/My Thoughts on Taking Notes.md",
+    "src/content/writing/The Mountain.md",
+    "src/content/med/Neurologisch onderzoek.md",
     "src/content/med/Clinical Pearl - Atrial Fibrillation Anticoagulation.md",
     "src/content/med/Clinical Pearl - Antibiotic Timeouts.md",
     "src/content/med/Clinical Pearl - Acute Kidney Injury First Pass.md",
-    "src/content/writing/Essay Writing Protocol.md",
     "src/app/topics/med/[topic]/page.tsx",
     "src/app/med/[...slug]/page.tsx",
     "src/content/med/timeline.json",
@@ -235,12 +237,10 @@
     "src/content/recipes/Burnt Basque Cheesecake.md",
     "AGENTS.md",
     "src/content/recipes/Pasta alla Norcina.md",
-    "src/content/writing/My Thoughts on Taking Notes.md",
     "src/content/writing/On Ideas That Don't Get to Be Realised.md",
     "src/content/writing/Hoe te Studeren.md",
     "src/lib/The Traveler.md",
     "src/lib/On Ideas That Don't Get to Be Realised.md",
-    "src/lib/My Thoughts on Taking Notes.md",
     "Attachments/IMG_2993.jpg",
     "Attachments/Pasted image 20251002161925.png",
     "Attachments/Spinal_cord_tracts_-_English.svg-2.png",
