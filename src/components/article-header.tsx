@@ -18,6 +18,15 @@ type MetaItemProps = {
   children: ReactNode;
 };
 
+function dayKey(input: unknown): string {
+  const d = input instanceof Date ? input : new Date(String(input));
+  if (Number.isNaN(d.getTime())) return "";
+  const year = d.getUTCFullYear();
+  const month = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(d.getUTCDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function MetaItem({ label, children }: MetaItemProps) {
   return (
     <span>
@@ -41,6 +50,13 @@ export function ArticleHeader(props: ArticleHeaderProps) {
   const hasCategories = Array.isArray(categories) && categories.length > 0;
   const topicsBase = topicBasePath.replace(/\/$/, "");
   const metaItems: ReactNode[] = [];
+  const hasUpdated = Boolean(updated);
+  const sameDay = updated ? dayKey(updated) === dayKey(created) : false;
+  const rightDate = updated ? (sameDay ? created : updated) : null;
+  const showPublishedLeft = !sameDay;
+  const rightLabel = sameDay ? "Published:" : "Updated:";
+  const showTitleRow = showPublishedLeft || hasUpdated;
+  const sameDayPublishedOnly = hasUpdated && sameDay;
 
   if (typeof readingMinutes === "number") {
     metaItems.push(
@@ -70,22 +86,45 @@ export function ArticleHeader(props: ArticleHeaderProps) {
 
   return (
     <div className="mb-10">
-      <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm opacity-70">
-        <MetaItem label="Published:">
-          <time className="time-citation" dateTime={String(created)}>
-            {formatLongDate(created)}
-          </time>
-        </MetaItem>
-        {updated ? (
-          <MetaItem label="Updated:">
-            <time className="time-citation" dateTime={String(updated)}>
-              {formatLongDate(updated)}
-            </time>
-          </MetaItem>
-        ) : null}
-      </div>
+      {sameDayPublishedOnly ? (
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-2xl font-semibold leading-tight">{title}</h1>
+          <div className="text-sm opacity-70">
+            <MetaItem label={rightLabel}>
+              <time className="time-citation" dateTime={String(rightDate)}>
+                {formatLongDate(rightDate)}
+              </time>
+            </MetaItem>
+          </div>
+        </div>
+      ) : (
+        <>
+          {showTitleRow ? (
+            <div
+              className={`flex flex-wrap items-baseline gap-3 text-sm opacity-70 ${showPublishedLeft ? "justify-between" : "justify-end"}`}
+            >
+              {showPublishedLeft ? (
+                <MetaItem label="Published:">
+                  <time className="time-citation" dateTime={String(created)}>
+                    {formatLongDate(created)}
+                  </time>
+                </MetaItem>
+              ) : null}
+              {hasUpdated && rightDate ? (
+                <MetaItem label={rightLabel}>
+                  <time className="time-citation" dateTime={String(rightDate)}>
+                    {formatLongDate(rightDate)}
+                  </time>
+                </MetaItem>
+              ) : null}
+            </div>
+          ) : null}
 
-      <h1 className="mt-2 text-2xl font-semibold leading-tight">{title}</h1>
+          <h1 className={`${showTitleRow ? "mt-2" : "mt-0"} text-2xl font-semibold leading-tight`}>
+            {title}
+          </h1>
+        </>
+      )}
 
       {metaItems.length ? (
         <div className="mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm opacity-70">
