@@ -179,7 +179,7 @@ export default async function HomePage(props: {
               </Link>{" "}
               · {medCount}{" "}
               <Link href="/med" className="underline underline-offset-4">
-                Coschap Kronieken
+                Med school notes
               </Link>
             </span>
           ),
@@ -229,14 +229,18 @@ export default async function HomePage(props: {
 
           <ul className="space-y-1.5">
             {posts.map((p) => (
-              <li key={p.url} className="flex items-baseline gap-3">
+              <li key={p.url} className="flex items-center gap-3">
                 <time
                   dateTime={String(p.data.created)}
-                  className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+                  className="time-index w-16 shrink-0 text-xs text-gray-500/90"
                 >
                   {formatYearMonth(p.data.created)}
                 </time>
-                <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
+                <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
+                <Link
+                  href={p.url}
+                  className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"
+                >
                   {p.data.title}
                 </Link>
               </li>
@@ -276,14 +280,18 @@ export default async function HomePage(props: {
           {recipes.length ? (
             <ul className="space-y-1.5">
               {recipes.map((r) => (
-                <li key={r.url} className="flex items-baseline gap-3">
+                <li key={r.url} className="flex items-center gap-3">
                   <time
                     dateTime={String(r.data.created)}
-                    className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+                    className="time-index w-16 shrink-0 text-xs text-gray-500/90"
                   >
                     {formatYearMonth(r.data.created)}
                   </time>
-                  <Link href={r.url} className="underline underline-offset-4 text-[15px] leading-snug">
+                  <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
+                  <Link
+                    href={r.url}
+                    className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"
+                  >
                     {r.data.title}
                   </Link>
                 </li>

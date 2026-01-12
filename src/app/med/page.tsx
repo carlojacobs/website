@@ -88,14 +88,18 @@ export default function MedIndexPage() {
           {journalEntries.length ? (
             <ul className="space-y-1.5">
               {journalEntries.map((p) => (
-                <li key={p.url} className="flex items-baseline gap-3">
+                <li key={p.url} className="flex items-center gap-3">
                   <time
-                    className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+                    className="time-index w-16 shrink-0 text-xs text-gray-500/90"
                     dateTime={String(p.data.created)}
                   >
                     {formatYearMonth(p.data.created)}
                   </time>
-                  <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
+                  <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
+                  <Link
+                    href={p.url}
+                    className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"
+                  >
                     {p.data.title}
                   </Link>
                 </li>
@@ -114,14 +118,18 @@ export default function MedIndexPage() {
           {noteEntries.length ? (
             <ul className="space-y-1.5">
               {noteEntries.map((p) => (
-                <li key={p.url} className="flex items-baseline gap-3">
+                <li key={p.url} className="flex items-center gap-3">
                   <time
-                    className="time-index relative top-[1px] w-16 shrink-0 text-xs text-gray-500/90"
+                    className="time-index w-16 shrink-0 text-xs text-gray-500/90"
                     dateTime={String(p.data.created)}
                   >
                     {formatYearMonth(p.data.created)}
                   </time>
-                  <Link href={p.url} className="underline underline-offset-4 text-[15px] leading-snug">
+                  <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
+                  <Link
+                    href={p.url}
+                    className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"
+                  >
                     {p.data.title}
                   </Link>
                 </li>
