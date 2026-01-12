@@ -58,6 +58,16 @@ body {
 
 .prose blockquote {
   border-left-color: #d6a25a;
+  quotes: none;
+}
+
+.prose blockquote::before,
+.prose blockquote::after,
+.prose blockquote p::before,
+.prose blockquote p::after,
+.prose :where(blockquote p)::before,
+.prose :where(blockquote p)::after {
+  content: none !important;
 }
 
 html {
