@@ -1,8 +1,9 @@
 ---
 created: 2026-01-12T22:01
-updated: 2026-01-12T22:02
+updated: 2026-01-12T22:09
 categories:
   - Italian
+  - main dishes
 title: Ragu Litigiosa
 ---
 ## Ingrediënten
