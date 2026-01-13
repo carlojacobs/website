@@ -58,7 +58,6 @@ export default function MedIndexPage() {
         strip={{
           className: "text-amber-800/70 opacity-100",
           paddingTopClass: "pt-5",
-          showConnector: true,
           alignCenter: true,
           left: (
             <Link href="/" className="underline underline-offset-4">
@@ -95,7 +94,6 @@ export default function MedIndexPage() {
                   >
                     {formatYearMonth(p.data.created)}
                   </time>
-                  <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
                   <Link
                     href={p.url}
                     className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"
@@ -125,7 +123,6 @@ export default function MedIndexPage() {
                   >
                     {formatYearMonth(p.data.created)}
                   </time>
-                  <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
                   <Link
                     href={p.url}
                     className="ml-auto text-right underline underline-offset-4 text-[15px] leading-snug"

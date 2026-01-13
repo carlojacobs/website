@@ -34,7 +34,6 @@ export default async function WritingTopicPage(props: {
         strip={{
           className: "text-amber-800/70 opacity-100",
           paddingTopClass: "pt-5",
-          showConnector: true,
           alignCenter: true,
           left: (
             <Link href="/" className="underline underline-offset-4">
@@ -61,7 +60,6 @@ export default async function WritingTopicPage(props: {
             >
               {formatYearMonth(p.data.created)}
             </time>
-            <span className="mx-2 hidden flex-1 border-t border-black/10 opacity-70 sm:block" />
             <Link
               href={p.url}
               className="ml-auto text-right underline underline-offset-4 text-[14px] leading-snug"
